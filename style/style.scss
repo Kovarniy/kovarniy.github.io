@@ -1,0 +1,55 @@
+body {
+  background-color: #88def8;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+#work-space {
+  height: 700px;
+  max-width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  .card {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+
+    .front-card,
+    .back-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15%;
+      transition: 1s;
+      backface-visibility: hidden;
+    }
+    .front-card {
+      background-color: white;
+    }
+    .back-card {
+      background-color: gold;
+      transform: rotateY(180deg);
+    }
+  }
+  .card:hover {
+    .front-card {
+      transform: rotateY(180deg);
+    }
+    .back-card {
+      transform: rotateY(0deg);
+    }
+  }
+}
