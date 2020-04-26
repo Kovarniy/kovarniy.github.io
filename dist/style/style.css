@@ -25,6 +25,25 @@ body {
           flex-direction: column;
 }
 
+header {
+  padding: 15px 0;
+}
+
+header h1 {
+  font-size: 72px;
+  color: #ffebbd;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: "Bangers", cursive;
+}
+
+main {
+  margin: 50px 0;
+}
+
+footer {
+  vertical-align: sub;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -64,6 +83,10 @@ body {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #work-space .card {
@@ -164,5 +187,26 @@ body {
 #work-space .card:hover .front-card,
 #work-space .card:hover .back-card {
   cursor: pointer;
+}
+
+.game-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.game-menu .menu-btn {
+  border: 1px solid black;
+  border-radius: 45%;
+  margin: 5px;
+  padding: 50px;
+  font-size: 28px;
+  width: 300px;
+  background-color: #fff;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */
