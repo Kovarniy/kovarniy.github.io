@@ -1,5 +1,21 @@
+@charset "UTF-8";
+/* Очищающие стили */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Стили для демонстрации */
 body {
   background-color: #88def8;
+  font-family: Arial, Helvetica, sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,17 +25,38 @@ body {
           flex-direction: column;
 }
 
-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Desktop first breack points */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 970px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 320px;
+  }
 }
 
 #work-space {
-  height: 700px;
-  max-width: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,16 +64,15 @@ main {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
 }
 
 #work-space .card {
   position: relative;
-  width: 200px;
-  height: 300px;
+  width: 16%;
+  height: 250px;
   -webkit-perspective: 1000px;
           perspective: 1000px;
+  margin: 10px 3px;
 }
 
 #work-space .card .front-card,
@@ -70,6 +106,49 @@ main {
   background-color: gold;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+@media (max-width: 1200px) {
+  #work-space .card {
+    height: 230px;
+    margin: 6px 3px;
+  }
+}
+
+@media (max-width: 992px) {
+  #work-space .card {
+    height: 210px;
+    width: 24%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  #work-space .card {
+    height: 170px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  #work-space .card {
+    margin: 4px 2px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  #work-space .card {
+    margin: 4px 2px;
+    height: 110px;
+    width: 110px;
+  }
+}
+
+@media (max-width: 576px) {
+  #work-space .card {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 #work-space .card:hover .front-card {

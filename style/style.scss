@@ -1,26 +1,63 @@
+/* Очищающие стили */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+/* Стили для демонстрации */
+
 body {
   background-color: #88def8;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
 }
 
-main {
-  display: flex;
-  justify-content: space-around;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Desktop first breack points */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 970px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 750px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 580px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    max-width: 320px;
+  }
 }
 
 #work-space {
-  height: 700px;
-  max-width: 70%;
+  // border: 2px solid orange;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: space-around;
+
   .card {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 16%;
+    height: 250px;
     perspective: 1000px;
+    margin: 10px 3px;
 
     .front-card,
     .back-card {
@@ -43,7 +80,34 @@ main {
       background-color: gold;
       transform: rotateY(180deg);
     }
+
+    @media (max-width: 1200px) {
+      height: 230px;
+      margin: 6px 3px;
+    }
+    @media (max-width: 992px) {
+      height: 210px;
+      width: 24%;
+    }
+    @media (max-width: 992px) and (max-height: 415px) {
+      height: 170px;
+      width: 15%;
+    }
+    @media (max-width: 767px) {
+      margin: 4px 2px;
+      height: 140px;
+    }
+    @media (max-width: 767px) and (max-height: 415px) {
+      margin: 4px 2px;
+      height: 110px;
+      width: 110px;
+    }
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 80px;
+    }
   }
+
   .card:hover {
     .front-card {
       transform: rotateY(180deg);
