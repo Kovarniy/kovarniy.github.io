@@ -151,13 +151,18 @@ body {
   }
 }
 
-#work-space .card:hover .front-card {
+#work-space .card:active .front-card {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-#work-space .card:hover .back-card {
+#work-space .card:active .back-card {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
+}
+
+#work-space .card:hover .front-card,
+#work-space .card:hover .back-card {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

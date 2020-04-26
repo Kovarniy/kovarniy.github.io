@@ -108,12 +108,19 @@ body {
     }
   }
 
-  .card:hover {
+  .card:active {
     .front-card {
       transform: rotateY(180deg);
     }
     .back-card {
       transform: rotateY(0deg);
+    }
+  }
+
+  .card:hover {
+    .front-card,
+    .back-card {
+      cursor: pointer;
     }
   }
 }
