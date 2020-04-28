@@ -7,14 +7,14 @@ const removeField = (elemeintId) => {
 };
 
 const createSelector = (inEl, nodeName) => {
-  let selector = document.createElement("selector");
+  let selector = document.createElement("select");
   if (nodeName === "difficultyLvl") {
-    selector.innerHTML = `<option disabled >Easy</option>
+    selector.innerHTML = `<option selected value="1" >Easy</option>
                         <option>Medium</option>
                         <option>Hard</option>`;
   }
   if (nodeName === "cardSet") {
-    selector.innerHTML = `<option disabled >Set1</option>
+    selector.innerHTML = `<option selected >Set1</option>
                         <option>Set2</option>
                         <option>Set3</option>`;
   }
@@ -39,17 +39,21 @@ const newGame = () => {
 };
 
 const openOptions = () => {
-  const doc = document.getElementById("work-space");
   removeField("game-menu");
 
-  createSelector(doc, "difficultyLvl");
-  createSelector(doc, "cardSet");
+  const doc = document.getElementById("work-space");
+  let div = document.createElement("div");
+  div.setAttribute("id", "game-menu");
+  doc.append(div);
+
+  createSelector(div, "difficultyLvl");
+  createSelector(div, "cardSet");
 
   let button = document.createElement("button");
   button.classList.add("menu-btn");
   button.innerText = "Back";
   button.setAttribute("id", "back-to-main-menu-btn");
-  doc.append(button);
+  div.append(button);
 };
 
 export { newGame, openOptions };
