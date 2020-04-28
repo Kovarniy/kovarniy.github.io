@@ -1,4 +1,4 @@
-.game-menu {
+#game-menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,7 +8,7 @@
           flex-direction: column;
 }
 
-.game-menu .menu-btn {
+#game-menu .menu-btn {
   border: 1px solid black;
   border-radius: 45%;
   margin: 5px;
@@ -17,5 +17,11 @@
   width: 300px;
   background-color: #fff;
   color: black;
+  cursor: pointer;
+}
+
+#game-menu .menu-btn:focus {
+  outline: none !important;
+  color: #ffebbd;
 }
 /*# sourceMappingURL=buttons.css.map */
