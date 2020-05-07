@@ -1,20 +1,11 @@
 import { removeField, createSelector } from "../engine/gameFieldActivity.js";
+import { gameInit } from "../engine/newGame.js";
 
 // This btn removed game-menu and uploaded game-field wich cards
 const newGame = () => {
-  const doc = document.getElementById("work-space");
+  
   removeField("game-menu");
-
-  // TODO: fieldSize - this parametr must be upload from settings.json
-  const fieldSize = 12;
-  for (let i = 0; i < fieldSize; i++) {
-    let div = document.createElement("div");
-    div.classList.add("card");
-    div.setAttribute("id", `${i}-card`);
-    div.innerHTML = `<div class="front-card">front</div>
-          <div class="back-card">back</div>`;
-    doc.append(div);
-  }
+  gameInit();
 };
 
 const openOptions = () => {
