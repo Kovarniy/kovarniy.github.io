@@ -72,6 +72,12 @@ footer {
     perspective: 1000px;
     margin: 10px 3px;
 
+    .card-logo {
+      background-image: url(../img/cat1.jpg);
+      width: 95%;
+      height: 95%;
+      border-radius: 15%;
+    }
     .front-card,
     .back-card {
       position: absolute;
@@ -90,6 +96,7 @@ footer {
       background-color: white;
     }
     .back-card {
+      // background-image: url(../img/cat1.jpg);
       background-color: gold;
       transform: rotateY(180deg);
     }
