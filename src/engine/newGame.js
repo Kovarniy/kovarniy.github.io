@@ -18,29 +18,22 @@ const addCardsOnField = (fieldSize) => {
 const reaquestUrl = "http://127.0.0.1:5500/dist/data/gameData.json";
 // request for get cats pictures
 const getGameData = (method, url) => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.onload = () => {
-      if (xhr.status >= 400) {
-        reject(xhr.response());
-      } else {
-        resolve(xhr.response);
-      }
-    };
-    xhr.onerror = () => {
-      reject(xhr.response);
-    };
-    xhr.send();
+  return fetch(url).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return response.json().then((error) => {
+      const e = new Error("Что-то пошло не так");
+      e.data = error;
+      throw e;
+    });
   });
 };
 
 const createGameMatrix = (fieldSize) => {
   let gameMatrix = [];
   let cards = new Map();
-  let gameData = getGameData("GET", reaquestUrl)
-    .then((data) => data)
-    .catch((err) => console.error(err));
+  let gameData = getGameData("GET", reaquestUrl);
   console.log(gameData);
 
   // Набираем список рандомеых картинок
