@@ -17,29 +17,31 @@ const addCardsOnField = (fieldSize) => {
 
 const reaquestUrl = "http://127.0.0.1:5500/dist/data/gameData.json";
 // request for get cats pictures
-const getGameData = (method, url) => {
-  return fetch(url).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    return response.json().then((error) => {
-      const e = new Error("Что-то пошло не так");
-      e.data = error;
-      throw e;
-    });
+
+const getGameData = (url) => {
+  return fetch(url).then((responce) => {
+    return responce.json();
   });
 };
 
+// const parseData = (data) => {
+//   let cards = new Map();
+//   return cards;
+// };
+
 const createGameMatrix = (fieldSize) => {
   let gameMatrix = [];
-  let cards = new Map();
-  let gameData = getGameData("GET", reaquestUrl);
+
+  // TODO: Я хз что делать с промисами
+  let gameData = getGameData(reaquestUrl).then((data) => {
+    return parseData(data);
+  });
   console.log(gameData);
 
-  // Набираем список рандомеых картинок
   while (fieldSize / 2 < cards.size) {
     randomInteger(0, 14);
   }
+  // TODO: выбрать позиции для картинок
 };
 
 const gameInit = () => {
