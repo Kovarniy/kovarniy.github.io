@@ -1,0 +1,19 @@
+{
+  "catSet": [
+    { "id": 0, "link": "../img/cards/cats/cat1.jpg" },
+    { "id": 1, "link": "../img/cards/cats/cat2.jpg" },
+    { "id": 2, "link": "../img/cards/cats/cat3.jpg" },
+    { "id": 3, "link": "../img/cards/cats/cat4.jpg" },
+    { "id": 4, "link": "../img/cards/cats/cat5.jpg" },
+    { "id": 5, "link": "../img/cards/cats/cat6.jpg" },
+    { "id": 6, "link": "../img/cards/cats/cat7.jpg" },
+    { "id": 7, "link": "../img/cards/cats/cat8.jpg" },
+    { "id": 8, "link": "../img/cards/cats/cat9.jpg" },
+    { "id": 9, "link": "../img/cards/cats/cat10.jpg" },
+    { "id": 10, "link": "../img/cards/cats/cat11.jpg" },
+    { "id": 11, "link": "../img/cards/cats/cat12.jpg" },
+    { "id": 12, "link": "../img/cards/cats/cat13.jpg" },
+    { "id": 13, "link": "../img/cards/cats/cat14.jpg" },
+    { "id": 14, "link": "../img/cards/cats/cat15.jpg" }
+  ]
+}

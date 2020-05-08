@@ -3,4 +3,19 @@
 let levelOfDifficulty = "Easy";
 let cardSet = "cat";
 
-export { levelOfDifficulty, cardSet };
+const getFieldSize = () => {
+  switch (levelOfDifficulty) {
+    case "Easy":
+      return 12;
+    case "Medium":
+      return 18;
+    case "Hard":
+      return 24;
+    default:
+      return 12;
+  }
+};
+
+const getCardSet = () => {};
+
+export { levelOfDifficulty, cardSet, getFieldSize };

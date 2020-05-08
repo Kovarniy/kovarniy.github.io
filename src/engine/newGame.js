@@ -1,18 +1,8 @@
-import { levelOfDifficulty, cardSet } from "./settings.js";
+import { levelOfDifficulty, cardSet, getFieldSize } from "./settings.js";
+import { randomInteger } from "../algorithms/numeric.js";
 
-let getFieldSize = (_levelOfDifficulty) => {
-  switch (_levelOfDifficulty) {
-    case "Easy":
-      return 12;
-    case "Medium":
-      return 18;
-    case "Hard":
-      return 24;
-    default:
-      return 12;
-  }
-};
-
+// Предпологаяю, что эта функция должна храниться в gameFieldActivity и вызываться
+//   при клике на кнопку "новая игрв"
 const addCardsOnField = (fieldSize) => {
   const doc = document.getElementById("work-space");
   for (let i = 0; i < fieldSize; i++) {
@@ -25,9 +15,44 @@ const addCardsOnField = (fieldSize) => {
   }
 };
 
+const reaquestUrl = "http://127.0.0.1:5500/dist/data/gameData.json";
+// request for get cats pictures
+const getGameData = (method, url) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = () => {
+      if (xhr.status >= 400) {
+        reject(xhr.response());
+      } else {
+        resolve(xhr.response);
+      }
+    };
+    xhr.onerror = () => {
+      reject(xhr.response);
+    };
+    xhr.send();
+  });
+};
+
+const createGameMatrix = (fieldSize) => {
+  let gameMatrix = [];
+  let cards = new Map();
+  let gameData = getGameData("GET", reaquestUrl)
+    .then((data) => data)
+    .catch((err) => console.error(err));
+  console.log(gameData);
+
+  // Набираем список рандомеых картинок
+  while (fieldSize / 2 < cards.size) {
+    randomInteger(0, 14);
+  }
+};
+
 const gameInit = () => {
-  const fieldSize = getFieldSize(levelOfDifficulty);
+  const fieldSize = getFieldSize();
   addCardsOnField(fieldSize);
+  createGameMatrix(fieldSize);
 };
 
 export { gameInit };
