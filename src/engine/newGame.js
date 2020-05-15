@@ -1,5 +1,8 @@
 import { levelOfDifficulty, cardSet, getFieldSize } from "./settings.js";
 import { randomInteger } from "../algorithms/numeric.js";
+import { getJsonFromUrl } from "../algorithms/requests.js";
+
+const GAME_DATA_URL = "http://127.0.0.1:5500/dist/data/gameData.json";
 
 // Предпологаяю, что эта функция должна храниться в gameFieldActivity и вызываться
 //   при клике на кнопку "новая игрв"
@@ -15,32 +18,13 @@ const addCardsOnField = (fieldSize) => {
   }
 };
 
-const reaquestUrl = "http://127.0.0.1:5500/dist/data/gameData.json";
-// request for get cats pictures
-
-const getGameData = (url) => {
-  return fetch(url).then((responce) => {
-    return responce.json();
-  });
-};
-
-// const parseData = (data) => {
-//   let cards = new Map();
-//   return cards;
-// };
-
 const createGameMatrix = (fieldSize) => {
   let gameMatrix = [];
+  getJsonFromUrl(GAME_DATA_URL).then((data) => console.log(data));
 
-  // TODO: Я хз что делать с промисами
-  let gameData = getGameData(reaquestUrl).then((data) => {
-    return parseData(data);
-  });
-  console.log(gameData);
-
-  while (fieldSize / 2 < cards.size) {
-    randomInteger(0, 14);
-  }
+  // while (fieldSize / 2 < cards.size) {
+  //   randomInteger(0, 14);
+  // }
   // TODO: выбрать позиции для картинок
 };
 
