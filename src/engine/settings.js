@@ -1,7 +1,8 @@
 /* game settings are stored here */
 /* This file may be convert to json if you need to create server side */
+// TODO: rewrite this cod to Object!!!
 let levelOfDifficulty = "Easy";
-let cardSet = "cat";
+let cardSet = "catSet";
 
 const getFieldSize = () => {
   switch (levelOfDifficulty) {
@@ -16,6 +17,8 @@ const getFieldSize = () => {
   }
 };
 
-const getCardSet = () => {};
+const getCardSetName = () => {
+  return cardSet;
+};
 
-export { levelOfDifficulty, cardSet, getFieldSize };
+export { getCardSetName, getFieldSize };

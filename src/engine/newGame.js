@@ -1,4 +1,4 @@
-import { levelOfDifficulty, cardSet, getFieldSize } from "./settings.js";
+import { getCardSetName, getFieldSize } from "./settings.js";
 import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 
@@ -18,20 +18,31 @@ const addCardsOnField = (fieldSize) => {
   }
 };
 
-const createGameMatrix = (fieldSize) => {
-  let gameMatrix = [];
-  getJsonFromUrl(GAME_DATA_URL).then((data) => console.log(data));
+// TODO: тут добавится еше один параметр, который будет обозначать название набора карточек
+// он будет передавваться вместо "catSet"
+const getCards = async (fieldSize, cardSetName) => {
+  const gameDataResponse = await getJsonFromUrl(GAME_DATA_URL);
+  const pictureStore = new Map();
+  while (pictureStore.size < fieldSize / 2) {
+    const id = randomInteger(0, 14);
+    const link = gameDataResponse[cardSetName][id]["link"];
+    console.log(id, link);
+    if (!pictureStore.has(id)) {
+      pictureStore.set(id, link);
+    }
+  }
+  return pictureStore;
+};
 
-  // while (fieldSize / 2 < cards.size) {
-  //   randomInteger(0, 14);
-  // }
-  // TODO: выбрать позиции для картинок
+const createGameMatrix = (fieldSize, cardSetName) => {
+  const pictureStore = getCards(fieldSize, cardSetName);
 };
 
 const gameInit = () => {
   const fieldSize = getFieldSize();
+  const cardSetName = getCardSetName();
   addCardsOnField(fieldSize);
-  createGameMatrix(fieldSize);
+  createGameMatrix(fieldSize, cardSetName);
 };
 
 export { gameInit };
