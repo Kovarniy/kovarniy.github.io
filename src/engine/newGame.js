@@ -35,7 +35,6 @@ const getCards = async (fieldSize, cardSetName) => {
     }
   }
 
-  console.log(pictureStore);
   return pictureStore;
 };
 
@@ -43,21 +42,40 @@ const generateCardPosition = (fieldSize, cardsMap) => {
   let cardSet = new Set();
   let posArray = [];
   let index = 0;
+
   while (cardSet.size < fieldSize) {
-    const pos1 = randomInteger(0, 14);
-    const pos2 = randomInteger(0, 14);
-    if (!pictureStore.has(pos1) && !pictureStore.has(pos1)) {
-      hasEl.add(pos1);
-      hasEl.add(pos2);
-      posArray[pos1] = index;
-      index++;
-      posArray[pos2] = index;
+    let countUniqEl = 0;
+    // Generate two uniq pos for equal cards
+    while (countUniqEl < 2) {
+      const pos = randomInteger(0, fieldSize - 1);
+      if (!cardSet.has(pos)) {
+        cardSet.add(pos);
+        posArray[pos] = index;
+        countUniqEl++;
+      }
     }
+    index++;
+  }
+  console.log(posArray);
+  return posArray;
+};
+
+const renderBackSide = (posArray, cardsMap) => {
+  console.log(cardsMap);
+  const doc = document.getElementById("work-space");
+  let index = 0;
+  for (let node of doc.children) {
+    let numOfCard = posArray[index];
+    let link = cardsMap.get(numOfCard);
+    node.children[1].style.backgroundImage = `url(${link})`;
+    index++;
   }
 };
 
-const createGameMatrix = (fieldSize, cardSetName) => {
-  const pictureStore = getCards(fieldSize, cardSetName);
+const createGameMatrix = async (fieldSize, cardSetName) => {
+  const pictureStore = await getCards(fieldSize, cardSetName);
+  const posArray = generateCardPosition(fieldSize, pictureStore);
+  renderBackSide(posArray, pictureStore);
 };
 
 const gameInit = () => {
