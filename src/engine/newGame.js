@@ -18,20 +18,42 @@ const addCardsOnField = (fieldSize) => {
   }
 };
 
-// TODO: тут добавится еше один параметр, который будет обозначать название набора карточек
-// он будет передавваться вместо "catSet"
+// this function get Json from server and formed map answer with cards links
 const getCards = async (fieldSize, cardSetName) => {
   const gameDataResponse = await getJsonFromUrl(GAME_DATA_URL);
   const pictureStore = new Map();
+  // Данный set нужен для недопуска добавления повторяющихся жл в map
+  let hasEl = new Set();
+  let index = 0;
   while (pictureStore.size < fieldSize / 2) {
     const id = randomInteger(0, 14);
     const link = gameDataResponse[cardSetName][id]["link"];
-    console.log(id, link);
-    if (!pictureStore.has(id)) {
-      pictureStore.set(id, link);
+    if (!hasEl.has(id)) {
+      hasEl.add(id);
+      pictureStore.set(index, link);
+      index++;
     }
   }
+
+  console.log(pictureStore);
   return pictureStore;
+};
+
+const generateCardPosition = (fieldSize, cardsMap) => {
+  let cardSet = new Set();
+  let posArray = [];
+  let index = 0;
+  while (cardSet.size < fieldSize) {
+    const pos1 = randomInteger(0, 14);
+    const pos2 = randomInteger(0, 14);
+    if (!pictureStore.has(pos1) && !pictureStore.has(pos1)) {
+      hasEl.add(pos1);
+      hasEl.add(pos2);
+      posArray[pos1] = index;
+      index++;
+      posArray[pos2] = index;
+    }
+  }
 };
 
 const createGameMatrix = (fieldSize, cardSetName) => {
