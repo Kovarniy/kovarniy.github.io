@@ -84,6 +84,7 @@ const gameInit = () => {
   const cardSetName = getCardSetName();
   addCardsOnField(fieldSize);
   createGameMatrix(fieldSize, cardSetName);
+  console.log(`${location.hostname}:${location.port}`);
 };
 
 export { gameInit };
