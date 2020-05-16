@@ -2,7 +2,7 @@ import { getCardSetName, getFieldSize } from "./settings.js";
 import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 
-const GAME_DATA_URL = `http://${location.hostname}:${location.port}/dist/data/gameData.json`;
+const GAME_DATA_URL = `http://${location.hostname}/dist/data/gameData.json`;
 
 // Предпологаяю, что эта функция должна храниться в gameFieldActivity и вызываться
 //   при клике на кнопку "новая игрв"
