@@ -12,8 +12,8 @@ const addCardsOnField = (fieldSize) => {
     let div = document.createElement("div");
     div.classList.add("card");
     div.setAttribute("id", `${i}-card`);
-    div.innerHTML = `<div class="front-card">front</div>
-          <div class="back-card">back</div>`;
+    div.innerHTML = `<div class="front-card"></div>
+          <div class="back-card"></div>`;
     doc.append(div);
   }
 };
@@ -68,6 +68,7 @@ const renderBackSide = (posArray, cardsMap) => {
     let numOfCard = posArray[index];
     let link = cardsMap.get(numOfCard);
     node.children[1].style.backgroundImage = `url(${link})`;
+    node.children[1].style.backgroundSize = "100%";
     index++;
   }
 };
