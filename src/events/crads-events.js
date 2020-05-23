@@ -1,6 +1,5 @@
 import { getFieldSize } from "../engine/settings.js";
-let countUpCards = 0;
-let totalCount = 0;
+import { gameState } from "../engine/gameStatistics.js";
 
 const checkCardsMatches = () => {
   const invertedСards = document.querySelectorAll(`[activated="true"]`);
@@ -11,9 +10,10 @@ const checkCardsMatches = () => {
   if (card1Back.style.backgroundImage === card2Back.style.backgroundImage) {
     invertedСards[0].setAttribute("selected", true);
     invertedСards[1].setAttribute("selected", true);
-    totalCount += 2;
+    gameState.totalCountUpCards += 2;
     invertedСards[0].setAttribute("activated", false);
     invertedСards[1].setAttribute("activated", false);
+    setTimeout(checkEndGame, 2000);
   } else {
     rollDisabled();
     setTimeout(() => {
@@ -40,20 +40,31 @@ const rollEnabled = () => {
   });
 };
 
-const rollCard = (div) => {
-  if (div.getAttribute("activated") && countUpCards < 2) {
-    div.setAttribute("activated", true);
-    countUpCards++;
-  }
-
-  if (countUpCards == 2) {
-    countUpCards = 0;
-    checkCardsMatches();
-  }
-  // Это нужно переделать
-  if (getFieldSize() == totalCount) {
+const checkEndGame = () => {
+  if (getFieldSize() == gameState.totalCountUpCards) {
     alert("Вы прошли игру!");
   }
 };
 
-export { rollCard, totalCount };
+let countUpCards = 0;
+const rollCard = (div) => {
+  // this code work only with non selected and not activated functions
+  if (
+    !div.hasAttribute("selected") &&
+    div.getAttribute("activated") === "false"
+  ) {
+    gameState.countClicks += 1;
+    console.log(gameState);
+    if (div.getAttribute("activated") && countUpCards < 2) {
+      div.setAttribute("activated", true);
+      countUpCards++;
+    }
+
+    if (countUpCards == 2) {
+      countUpCards = 0;
+      checkCardsMatches();
+    }
+  }
+};
+
+export { rollCard };

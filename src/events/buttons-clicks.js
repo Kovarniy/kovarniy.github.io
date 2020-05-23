@@ -25,6 +25,4 @@ const openOptions = () => {
   div.append(button);
 };
 
-const cardClick = () => {};
-
 export { newGame, openOptions };
