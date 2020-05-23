@@ -3,7 +3,6 @@ import { gameInit } from "../engine/newGame.js";
 
 // This btn removed game-menu and uploaded game-field wich cards
 const newGame = () => {
-  
   removeField("game-menu");
   gameInit();
 };
@@ -25,5 +24,9 @@ const openOptions = () => {
   button.setAttribute("id", "back-to-main-menu-btn");
   div.append(button);
 };
+
+const cardClick = () => {
+  
+}
 
 export { newGame, openOptions };

@@ -1,6 +1,7 @@
 import { getCardSetName, getFieldSize } from "./settings.js";
 import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
+import { rollCard } from "../events/crads-events.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";
 
@@ -11,13 +12,27 @@ const addCardsOnField = (fieldSize) => {
   for (let i = 0; i < fieldSize; i++) {
     let div = document.createElement("div");
     div.classList.add("card");
+
+    // Alternative solution - use Event delegation on work-space
+    // div.onclick = function () {
+    //   rollCard(div);
+    // };
+    div.setAttribute("activated", false);
+
     div.setAttribute("id", `${i}-card`);
-    div.innerHTML = `<div class="front-card"></div>
+    div.innerHTML = `<div class="front-card" "activated", false></div>
           <div class="back-card"></div>`;
     doc.append(div);
   }
+
+  doc.onclick = function (event) {
+    let target = event.target;
+    if (!target.classList.contains("front-card")) return;
+    rollCard(target);
+  };
 };
 
+// It's functions need for formed game map
 // this function get Json from server and formed map answer with cards links
 const getCards = async (fieldSize, cardSetName) => {
   const gameDataResponse = await getJsonFromUrl(GAME_DATA_URL);
@@ -78,6 +93,7 @@ const createGameMatrix = async (fieldSize, cardSetName) => {
   const posArray = generateCardPosition(fieldSize, pictureStore);
   renderBackSide(posArray, pictureStore);
 };
+//
 
 const gameInit = () => {
   const fieldSize = getFieldSize();

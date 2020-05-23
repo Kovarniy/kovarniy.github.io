@@ -71,6 +71,9 @@ footer {
     height: 250px;
     perspective: 1000px;
     margin: 10px 3px;
+    z-index: 1000;
+    background-color: red;
+    border: solid 2px red;
 
     .card-logo {
       background-image: url(../img/cat1.jpg);
@@ -81,6 +84,7 @@ footer {
     .front-card,
     .back-card {
       position: absolute;
+      z-index: 900;
       top: 0;
       left: 0;
       width: 100%;
@@ -104,7 +108,8 @@ footer {
     @import "easyLevel.scss";
   }
 
-  .card:active {
+  .card.front-card[activated="true"],
+  .card.front-card[selected="true"] {
     .front-card {
       transform: rotateY(180deg);
     }
