@@ -1,10 +1,10 @@
 import { removeField, createSelector } from "../engine/gameFieldActivity.js";
-import { gameInit } from "../engine/newGame.js";
+import { startGame } from "../engine/newGame.js";
 
 // This btn removed game-menu and uploaded game-field wich cards
 const newGame = () => {
   removeField("game-menu");
-  gameInit();
+  startGame();
 };
 
 const openOptions = () => {
@@ -25,8 +25,6 @@ const openOptions = () => {
   div.append(button);
 };
 
-const cardClick = () => {
-  
-}
+const cardClick = () => {};
 
 export { newGame, openOptions };

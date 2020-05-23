@@ -96,9 +96,6 @@ footer {
   -webkit-perspective: 1000px;
           perspective: 1000px;
   margin: 10px 3px;
-  z-index: 1000;
-  background-color: red;
-  border: solid 2px red;
 }
 
 #work-space .card .card-logo {
@@ -111,7 +108,6 @@ footer {
 #work-space .card .front-card,
 #work-space .card .back-card {
   position: absolute;
-  z-index: 900;
   top: 0;
   left: 0;
   width: 100%;
@@ -185,14 +181,14 @@ footer {
   }
 }
 
-#work-space .card.front-card[activated="true"] .front-card,
-#work-space .card.front-card[selected="true"] .front-card {
+#work-space .card[activated="true"] .front-card,
+#work-space .card[selected="true"] .front-card {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-#work-space .card.front-card[activated="true"] .back-card,
-#work-space .card.front-card[selected="true"] .back-card {
+#work-space .card[activated="true"] .back-card,
+#work-space .card[selected="true"] .back-card {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
 }
