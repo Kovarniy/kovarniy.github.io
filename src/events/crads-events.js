@@ -13,7 +13,7 @@ const checkCardsMatches = () => {
     gameState.totalCountUpCards += 2;
     invertedСards[0].setAttribute("activated", false);
     invertedСards[1].setAttribute("activated", false);
-    setTimeout(checkEndGame, 2000);
+    setTimeout(checkEndGame, 1000);
   } else {
     rollDisabled();
     setTimeout(() => {
@@ -55,7 +55,8 @@ const rollCard = (div) => {
   ) {
     gameState.countClicks += 1;
     console.log(gameState);
-    if (div.getAttribute("activated") && countUpCards < 2) {
+
+    if (countUpCards < 2) {
       div.setAttribute("activated", true);
       countUpCards++;
     }

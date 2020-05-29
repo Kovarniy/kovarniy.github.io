@@ -1,31 +1,10 @@
 import { getCardSetName, getFieldSize } from "./settings.js";
 import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
-import { rollCard } from "../events/crads-events.js";
+import { gameState } from "../engine/gameStatistics.js";
+import { genetateGameField } from "../engine/gameFieldActivity.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";
-
-// Предпологаяю, что эта функция должна храниться в gameFieldActivity и вызываться
-//   при клике на кнопку "новая игрв"
-const addCardsOnField = (fieldSize) => {
-  const doc = document.getElementById("work-space");
-  for (let i = 0; i < fieldSize; i++) {
-    let div = document.createElement("div");
-    div.classList.add("card");
-
-    //Alternative solution - use Event delegation on work-space
-    div.onclick = function () {
-      rollCard(div);
-    };
-    div.setAttribute("activated", false);
-
-    div.setAttribute("id", `${i}-card`);
-    div.innerHTML = `<div class="front-card" activated="false"></div>
-          <div class="back-card"></div>`;
-    doc.append(div);
-  }
-
-};
 
 // It's functions need for formed game map
 // this function get Json from server and formed map answer with cards links
@@ -75,11 +54,13 @@ const renderBackSide = (posArray, cardsMap) => {
   const doc = document.getElementById("work-space");
   let index = 0;
   for (let node of doc.children) {
-    let numOfCard = posArray[index];
-    let link = cardsMap.get(numOfCard);
-    node.children[1].style.backgroundImage = `url(${link})`;
-    node.children[1].style.backgroundSize = "100%";
-    index++;
+    if (node.tagName !== "SPAN") {
+      let numOfCard = posArray[index];
+      let link = cardsMap.get(numOfCard);
+      node.children[1].style.backgroundImage = `url(${link})`;
+      node.children[1].style.backgroundSize = "100%";
+      index++;
+    }
   }
 };
 
@@ -93,8 +74,9 @@ const createGameMatrix = async (fieldSize, cardSetName) => {
 const startGame = () => {
   const fieldSize = getFieldSize();
   const cardSetName = getCardSetName();
-  addCardsOnField(fieldSize);
+  genetateGameField(fieldSize);
   createGameMatrix(fieldSize, cardSetName);
+  gameState.stopwatch("stopwatch");
 };
 
 export { startGame };

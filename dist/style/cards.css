@@ -1,0 +1,109 @@
+.card {
+  position: relative;
+  width: 16%;
+  height: 250px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  margin: 10px 3px;
+}
+
+.card .card-logo {
+  background-image: url(../img/cat1.jpg);
+  width: 95%;
+  height: 95%;
+  border-radius: 15%;
+}
+
+.card .front-card,
+.card .back-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 15%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.card .front-card {
+  background-color: white;
+}
+
+.card .back-card {
+  background-color: gold;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+@media (max-width: 1200px) {
+  .card {
+    height: 230px;
+    margin: 6px 3px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    height: 210px;
+    width: 24%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  .card {
+    height: 170px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    margin: 4px 2px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  .card {
+    margin: 4px 2px;
+    height: 110px;
+    width: 110px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.card[activated="true"] .front-card,
+.card[selected="true"] .front-card {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.card[activated="true"] .back-card,
+.card[selected="true"] .back-card {
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.card:hover .front-card,
+.card:hover .back-card {
+  cursor: pointer;
+}
+/*# sourceMappingURL=cards.css.map */
