@@ -17,11 +17,13 @@ const gameState = {
         hour += 1;
         min = 0;
       }
-      
-      if (hour < 10) hour = "0" + hour;
-      if (min < 10) min = "0" + min;
-      if (sec < 10) sec = "0" + sec;
-      let timeString = hour + ":" + min + ":" + sec;
+
+      let sHour = hour < 10 ? `0${hour}` : hour;
+      let timeString = `${sHour}:`;
+      let sMin = min < 10 ? `0${min}` : min;
+      timeString += `${sMin}:`;
+      let sSec = sec < 10 ? `0${sec}` : sec;
+      timeString += `${sSec}`;
 
       let timeEl = document.getElementById(elId);
       timeEl.textContent = "Time: " + timeString;
