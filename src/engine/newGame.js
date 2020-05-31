@@ -76,7 +76,7 @@ const startGame = () => {
   const cardSetName = getCardSetName();
   genetateGameField(fieldSize);
   createGameMatrix(fieldSize, cardSetName);
-  gameState.stopwatch("stopwatch");
+  gameState.stopwatch.start();
 };
 
 export { startGame };

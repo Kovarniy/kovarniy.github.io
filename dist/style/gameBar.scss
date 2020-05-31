@@ -1,0 +1,12 @@
+#infoBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#countClick,
+#stopwatch {
+  //   margin: 0 5px;
+  font-size: 18;
+}

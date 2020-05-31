@@ -91,11 +91,21 @@ footer {
 
 #work-space #infoBar {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #work-space #countClick,
 #work-space #stopwatch {
-  display: inline;
+  font-size: 18;
 }
 
 #work-space .card {
@@ -232,5 +242,14 @@ footer {
 #game-menu .menu-btn:focus {
   outline: none !important;
   color: #ffebbd;
+}
+
+#modalWindow {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  background-color: red;
+  border: 15%;
+  width: 300px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,11 @@
 import { getFieldSize } from "../engine/settings.js";
 import { gameState } from "../engine/gameStatistics.js";
+import { showEndGameWindow } from "../engine/gameFieldActivity.js";
+
+const clickCounter = (count) => {
+  const clickBar = document.getElementById("countClick");
+  clickBar.innerHTML = `<b>Number of clicks:</b> ${count}`;
+};
 
 const checkCardsMatches = () => {
   const invertedСards = document.querySelectorAll(`[activated="true"]`);
@@ -43,6 +49,9 @@ const rollEnabled = () => {
 const checkEndGame = () => {
   if (getFieldSize() == gameState.totalCountUpCards) {
     alert("Вы прошли игру!");
+
+    gameState.stopwatch().stop();
+    // showEndGameWindow();
   }
 };
 
@@ -54,6 +63,7 @@ const rollCard = (div) => {
     div.getAttribute("activated") === "false"
   ) {
     gameState.countClicks += 1;
+    clickCounter(gameState.countClicks);
     console.log(gameState);
 
     if (countUpCards < 2) {

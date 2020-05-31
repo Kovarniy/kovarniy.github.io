@@ -65,15 +65,10 @@ footer {
   vertical-align: middle;
   align-items: center;
 
-  #infoBar {
-    width: 100%;
-  }
-
-  #countClick,
-  #stopwatch {
-    display: inline;
-  }
+  @import "gameBar.scss";
   @import "cards.scss";
 }
 
 @import "buttons.scss";
+
+@import "modalWindow.scss";

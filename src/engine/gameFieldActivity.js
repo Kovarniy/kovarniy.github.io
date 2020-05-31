@@ -1,5 +1,5 @@
 import { rollCard } from "../events/crads-events.js";
-
+import { gameState } from "../engine/gameStatistics.js";
 // create settings sekectors
 const createSelector = (inEl, nodeName) => {
   let selector = document.createElement("select");
@@ -44,7 +44,7 @@ const addInfoBar = () => {
   const doc = document.getElementById("work-space");
   let span = document.createElement("span");
   span.setAttribute("id", "infoBar");
-  span.innerHTML = `<p id="countClick">Number of clicks</p> <p id="stopwatch">Time</p>`;
+  span.innerHTML = `<p id="countClick"><b>Number of clicks:</b> 0</p> <p id="stopwatch"><b>Time:</b> 00:00:00</p>`;
   doc.append(span);
 };
 
@@ -74,4 +74,14 @@ const genetateGameField = (fieldSize) => {
 };
 //
 
-export { openGameSettings, genetateGameField };
+const showEndGameWindow = () => {
+  const modalWindow = document.createElement("div");
+  modalWindow.setAttribute("id", "modalWindow");
+  modalWindow.innerHTML = `
+  Congratulations you completed the game!
+  Travel time: ${gameState.stopwatch().currentTime()}
+  Number of Clicks: ${gameState.countClicks}`;
+  document.body.append(modalWindow);
+};
+
+export { openGameSettings, genetateGameField, showEndGameWindow };
