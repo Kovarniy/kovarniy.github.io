@@ -3,7 +3,6 @@ import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { genetateGameField } from "../engine/gameFieldActivity.js";
-import { showEndGameWindow } from "../engine/gameFieldActivity.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";
 
@@ -28,7 +27,7 @@ const getCards = async (fieldSize, cardSetName) => {
   return pictureStore;
 };
 
-const generateCardPosition = (fieldSize, cardsMap) => {
+const generateCardPosition = (fieldSize) => {
   let cardSet = new Set();
   let posArray = [];
   let index = 0;
@@ -52,7 +51,7 @@ const generateCardPosition = (fieldSize, cardsMap) => {
 
 const renderBackSide = (posArray, cardsMap) => {
   console.log(cardsMap);
-  const doc = document.getElementById("work-space");
+  const doc = document.getElementById("game-field");
   let index = 0;
   for (let node of doc.children) {
     if (node.tagName !== "SPAN") {
@@ -78,7 +77,6 @@ const startGame = () => {
   genetateGameField(fieldSize);
   createGameMatrix(fieldSize, cardSetName);
   gameState.stopwatch.start();
-  showEndGameWindow();
 };
 
 export { startGame };

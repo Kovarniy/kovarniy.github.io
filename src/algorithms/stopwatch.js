@@ -3,6 +3,10 @@ class Stopwatch {
     this.sec = this.min = this.hour = 0;
   }
 
+  reset() {
+    this.sec = this.min = this.hour = 0;
+  }
+
   tick(obj) {
     obj.sec++;
     if (obj.sec === 60) {

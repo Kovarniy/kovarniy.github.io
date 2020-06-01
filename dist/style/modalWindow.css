@@ -1,19 +1,49 @@
-@charset "UTF-8";
-#modalWindow {
+#openModal {
   position: fixed;
-  /* фиксированное положение */
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  /* цвет фона */
-  z-index: 1050;
+  visibility: hidden;
 }
 
-#modalContainer {
+#modalDialog {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
   position: relative;
-  width: auto;
-  margin: 10px;
+  display: block;
+  margin: 300px auto;
+  width: 33%;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #b7ebfd;
+  border: 5px solid #2984a3;
+  min-width: 300px;
+  line-height: 1.5;
+  top: -999px;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+#modalDialog p {
+  text-align: center;
+}
+
+#modalDialog .modal-btn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 25%;
+  padding: 15px;
+  font-size: 20px;
+  width: 125px;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+}
+
+#modalDialog .modal-btn:focus {
+  outline: none !important;
+  color: #ffebbd;
 }
 /*# sourceMappingURL=modalWindow.css.map */

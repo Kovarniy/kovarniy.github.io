@@ -48,7 +48,6 @@ const rollEnabled = () => {
 
 const checkEndGame = () => {
   if (getFieldSize() == gameState.totalCountUpCards) {
-
     gameState.stopwatch.stop();
     showEndGameWindow();
   }

@@ -79,6 +79,17 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#work-space #game-field {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
@@ -89,7 +100,7 @@ footer {
           align-items: center;
 }
 
-#work-space #infoBar {
+#work-space #game-field #infoBar {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,13 +114,13 @@ footer {
           justify-content: space-between;
 }
 
-#work-space #countClick,
-#work-space #stopwatch {
+#work-space #game-field #countClick,
+#work-space #game-field #stopwatch {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18;
 }
 
-#work-space .card {
+#work-space #game-field .card {
   position: relative;
   width: 16%;
   height: 250px;
@@ -118,15 +129,15 @@ footer {
   margin: 10px 3px;
 }
 
-#work-space .card .card-logo {
+#work-space #game-field .card .card-logo {
   background-image: url(../img/cat1.jpg);
   width: 95%;
   height: 95%;
   border-radius: 15%;
 }
 
-#work-space .card .front-card,
-#work-space .card .back-card {
+#work-space #game-field .card .front-card,
+#work-space #game-field .card .back-card {
   position: absolute;
   top: 0;
   left: 0;
@@ -148,46 +159,46 @@ footer {
           backface-visibility: hidden;
 }
 
-#work-space .card .front-card {
+#work-space #game-field .card .front-card {
   background-color: white;
 }
 
-#work-space .card .back-card {
+#work-space #game-field .card .back-card {
   background-color: gold;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
 @media (max-width: 1200px) {
-  #work-space .card {
+  #work-space #game-field .card {
     height: 230px;
     margin: 6px 3px;
   }
 }
 
 @media (max-width: 992px) {
-  #work-space .card {
+  #work-space #game-field .card {
     height: 210px;
     width: 24%;
   }
 }
 
 @media (max-width: 992px) and (max-height: 415px) {
-  #work-space .card {
+  #work-space #game-field .card {
     height: 170px;
     width: 15%;
   }
 }
 
 @media (max-width: 767px) {
-  #work-space .card {
+  #work-space #game-field .card {
     margin: 4px 2px;
     height: 140px;
   }
 }
 
 @media (max-width: 767px) and (max-height: 415px) {
-  #work-space .card {
+  #work-space #game-field .card {
     margin: 4px 2px;
     height: 110px;
     width: 110px;
@@ -195,26 +206,26 @@ footer {
 }
 
 @media (max-width: 576px) {
-  #work-space .card {
+  #work-space #game-field .card {
     width: 80px;
     height: 80px;
   }
 }
 
-#work-space .card[activated="true"] .front-card,
-#work-space .card[selected="true"] .front-card {
+#work-space #game-field .card[activated="true"] .front-card,
+#work-space #game-field .card[selected="true"] .front-card {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-#work-space .card[activated="true"] .back-card,
-#work-space .card[selected="true"] .back-card {
+#work-space #game-field .card[activated="true"] .back-card,
+#work-space #game-field .card[selected="true"] .back-card {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
 }
 
-#work-space .card:hover .front-card,
-#work-space .card:hover .back-card {
+#work-space #game-field .card:hover .front-card,
+#work-space #game-field .card:hover .back-card {
   cursor: pointer;
 }
 
@@ -245,30 +256,52 @@ footer {
   color: #ffebbd;
 }
 
-#modalWindow {
+#openModal {
   position: fixed;
-  /* фиксированное положение */
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  /* цвет фона */
-  z-index: 1050;
-  opacity: 0;
-  /* по умолчанию модальное окно прозрачно */
-  -webkit-transition: opacity 200ms ease-in;
-  transition: opacity 200ms ease-in;
-  /* анимация перехода */
-  pointer-events: none;
-  /* элемент невидим для событий мыши */
-  margin: 0;
-  padding: 0;
+  visibility: hidden;
 }
 
-#modalContainer {
+#modalDialog {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
   position: relative;
-  width: auto;
-  margin: 10px;
+  display: block;
+  margin: 300px auto;
+  width: 33%;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #b7ebfd;
+  border: 5px solid #2984a3;
+  min-width: 300px;
+  line-height: 1.5;
+  top: -999px;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+#modalDialog p {
+  text-align: center;
+}
+
+#modalDialog .modal-btn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 25%;
+  padding: 15px;
+  font-size: 20px;
+  width: 125px;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+}
+
+#modalDialog .modal-btn:focus {
+  outline: none !important;
+  color: #ffebbd;
 }
 /*# sourceMappingURL=style.css.map */
