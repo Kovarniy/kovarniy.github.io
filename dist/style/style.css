@@ -105,6 +105,7 @@ footer {
 
 #work-space #countClick,
 #work-space #stopwatch {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 18;
 }
 
@@ -245,11 +246,29 @@ footer {
 }
 
 #modalWindow {
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  background-color: red;
-  border: 15%;
-  width: 300px;
+  position: fixed;
+  /* фиксированное положение */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* цвет фона */
+  z-index: 1050;
+  opacity: 0;
+  /* по умолчанию модальное окно прозрачно */
+  -webkit-transition: opacity 200ms ease-in;
+  transition: opacity 200ms ease-in;
+  /* анимация перехода */
+  pointer-events: none;
+  /* элемент невидим для событий мыши */
+  margin: 0;
+  padding: 0;
+}
+
+#modalContainer {
+  position: relative;
+  width: auto;
+  margin: 10px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,19 @@
+@charset "UTF-8";
 #modalWindow {
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  background-color: red;
-  border: 15%;
-  width: 300px;
+  position: fixed;
+  /* фиксированное положение */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* цвет фона */
+  z-index: 1050;
+}
+
+#modalContainer {
+  position: relative;
+  width: auto;
+  margin: 10px;
 }
 /*# sourceMappingURL=modalWindow.css.map */

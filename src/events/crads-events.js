@@ -48,10 +48,9 @@ const rollEnabled = () => {
 
 const checkEndGame = () => {
   if (getFieldSize() == gameState.totalCountUpCards) {
-    alert("Вы прошли игру!");
 
-    gameState.stopwatch().stop();
-    // showEndGameWindow();
+    gameState.stopwatch.stop();
+    showEndGameWindow();
   }
 };
 

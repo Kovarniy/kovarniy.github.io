@@ -3,6 +3,7 @@ import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { genetateGameField } from "../engine/gameFieldActivity.js";
+import { showEndGameWindow } from "../engine/gameFieldActivity.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";
 
@@ -77,6 +78,7 @@ const startGame = () => {
   genetateGameField(fieldSize);
   createGameMatrix(fieldSize, cardSetName);
   gameState.stopwatch.start();
+  showEndGameWindow();
 };
 
 export { startGame };

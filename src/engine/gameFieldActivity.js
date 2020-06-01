@@ -77,10 +77,11 @@ const genetateGameField = (fieldSize) => {
 const showEndGameWindow = () => {
   const modalWindow = document.createElement("div");
   modalWindow.setAttribute("id", "modalWindow");
-  modalWindow.innerHTML = `
-  Congratulations you completed the game!
-  Travel time: ${gameState.stopwatch().currentTime()}
-  Number of Clicks: ${gameState.countClicks}`;
+  modalWindow.innerHTML = `<div id="modalContainer">
+  <p>Congratulations you completed the game!</p>
+  <p>Travel time: ${gameState.stopwatch.currentTime}</p>
+  <p>Number of Clicks: ${gameState.countClicks}</p>
+  </div>`;
   document.body.append(modalWindow);
 };
 
