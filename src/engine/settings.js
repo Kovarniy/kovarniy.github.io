@@ -1,6 +1,7 @@
 /* game settings are stored here */
 /* This file may be convert to json if you need to create server side */
 // TODO: rewrite this cod to Object!!!
+
 let levelOfDifficulty = "Easy";
 let cardSet = "catSet";
 
@@ -21,4 +22,4 @@ const getCardSetName = () => {
   return cardSet;
 };
 
-export { getCardSetName, getFieldSize };
+export { getCardSetName, getFieldSize, levelOfDifficulty, cardSet };

@@ -1,18 +1,23 @@
 import { rollCard } from "../events/crads-events.js";
 import { gameState } from "../engine/gameStatistics.js";
+import { selDifLvl, selectSardSet } from "../events/settnigs-events";
+import { newGame, openSettings } from "../events/buttons-clicks.js";
+
 // create settings sekectors
-const createSelector = (inEl, nodeName) => {
+const createSelector = (inEl, func, parametrsArray) => {
   let selector = document.createElement("select");
-  if (nodeName === "difficultyLvl") {
-    selector.innerHTML = `<option selected value="1" >Easy</option>
-                        <option>Medium</option>
-                        <option>Hard</option>`;
-  }
-  if (nodeName === "cardSet") {
-    selector.innerHTML = `<option selected >Cats</option>
-                        <option>People</option>
-                        <option>Paintings</option>`;
-  }
+
+  let inText = "";
+  selector.onchange = function () {
+    func(selector.value);
+  };
+
+  parametrsArray.forEach((el, ind) => {
+    if (ind === 0) inText += `<option selected value="${el}" >${el}</option>`;
+    else inText += `<option value="${el}">${el}</option>`;
+  });
+  selector.innerHTML = inText;
+
   inEl.append(selector);
 };
 
@@ -29,10 +34,13 @@ const openGameSettings = () => {
   div.setAttribute("id", "game-menu");
   doc.append(div);
 
-  createSelector(div, "difficultyLvl");
-  createSelector(div, "cardSet");
+  createSelector(div, selDifLvl, ["Easy", "Medium", "Hard"]);
+  createSelector(div, selectSardSet, ["Cats", "Lenin"]);
 
   let button = document.createElement("button");
+  button.onclick = function () {
+    renderGameMenu("game-menu");
+  };
   button.classList.add("menu-btn");
   button.innerText = "Back";
   button.setAttribute("id", "back-to-main-menu-btn");
@@ -77,15 +85,28 @@ const genetateGameField = (fieldSize) => {
   addCardsOnField(fieldSize);
 };
 //
-
-const renderGameMenu = () => {
-  removeField("game-field");
+// Game menu
+const renderGameMenu = (oldActivity) => {
+  removeField(`${oldActivity}`);
   const doc = document.getElementById("work-space");
   const div = document.createElement("div");
   div.setAttribute("id", "game-menu");
   div.innerHTML = `<button class="menu-btn" id="new-game-btn">New Game</button>
                    <button class="menu-btn" id="options-btn">Options</button>`;
   doc.append(div);
+  addGameMenuListner();
+};
+
+const addGameMenuListner = () => {
+  const newGameBtn = document.getElementById("new-game-btn");
+  const optionsBtn = document.getElementById("options-btn");
+  newGameBtn.onclick = newGame;
+  optionsBtn.onclick = openSettings;
+};
+
+//
+// Modal window
+const hiddenEndGameWindow = () => {
   const backModal = document.getElementById("openModal");
   backModal.style.visibility = "hidden";
   const modalWindow = document.getElementById("modalDialog");
@@ -102,10 +123,12 @@ const showEndGameWindow = () => {
   modalWindow.childNodes[3].innerText = `Travel time: ${gameState.countClicks}`;
   modalWindow.childNodes[5].innerText = `Number of Clicks: ${gameState.stopwatch.currentTime}`;
 };
+//
 
 export {
   openGameSettings,
   genetateGameField,
   showEndGameWindow,
   renderGameMenu,
+  hiddenEndGameWindow,
 };

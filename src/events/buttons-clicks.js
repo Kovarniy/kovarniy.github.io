@@ -1,6 +1,7 @@
 import {
   openGameSettings,
   renderGameMenu,
+  hiddenEndGameWindow,
 } from "../engine/gameFieldActivity.js";
 import { startGame } from "../engine/newGame.js";
 import { gameState } from "../engine/gameStatistics.js";
@@ -15,12 +16,9 @@ const openSettings = () => {
 };
 
 const endGame = () => {
-  renderGameMenu();
+  hiddenEndGameWindow();
+  renderGameMenu("game-field");
   gameState.reset();
-  const newGameBtn = document.getElementById("new-game-btn");
-  const optionsBtn = document.getElementById("options-btn");
-  newGameBtn.onclick = newGame;
-  optionsBtn.onclick = openSettings;
 };
 
 export { newGame, openSettings, endGame };
