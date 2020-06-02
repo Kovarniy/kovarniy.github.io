@@ -120,8 +120,8 @@ const showEndGameWindow = () => {
   modalWindow.style.top = "0px";
   console.log(modalWindow.childNodes[3]);
   console.log(modalWindow.childNodes[5]);
-  modalWindow.childNodes[3].innerText = `Travel time: ${gameState.countClicks}`;
-  modalWindow.childNodes[5].innerText = `Number of Clicks: ${gameState.stopwatch.currentTime}`;
+  modalWindow.childNodes[3].innerText = `Travel time: ${gameState.stopwatch.currentTime}`;
+  modalWindow.childNodes[5].innerText = `Number of Clicks: ${gameState.countClicks}`;
 };
 //
 
