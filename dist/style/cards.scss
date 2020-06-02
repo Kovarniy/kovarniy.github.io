@@ -33,8 +33,6 @@
     background-color: gold;
     transform: rotateY(180deg);
   }
-
-  @import "easyLevel.scss";
 }
 
 .card[activated="true"],
@@ -52,4 +50,16 @@
   .back-card {
     cursor: pointer;
   }
+}
+
+.easy {
+  @import "easyLevel.scss";
+}
+
+.medium {
+  // TODO: подключить стили
+}
+
+.hard {
+  // TODO: подключить стили
 }

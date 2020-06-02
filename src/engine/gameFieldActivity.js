@@ -2,6 +2,7 @@ import { rollCard } from "../events/crads-events.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { selDifLvl, selectSardSet } from "../events/settnigs-events";
 import { newGame, openSettings } from "../events/buttons-clicks.js";
+import { getFieldSize } from "../engine/settings.js";
 
 // create settings sekectors
 const createSelector = (inEl, func, parametrsArray) => {
@@ -65,6 +66,9 @@ const addCardsOnField = (fieldSize) => {
   for (let i = 0; i < fieldSize; i++) {
     const div = document.createElement("div");
     div.classList.add("card");
+    if (getFieldSize() === 12) div.classList.add("easy");
+    if (getFieldSize() === 18) div.classList.add("medium");
+    if (getFieldSize() === 24) div.classList.add("hard");
 
     //Alternative solution - use Event delegation on work-space
     div.onclick = function () {
