@@ -22,4 +22,12 @@ const getCardSetName = () => {
   return cardSet;
 };
 
-export { getCardSetName, getFieldSize, levelOfDifficulty, cardSet };
+const setCardSet = (value) => {
+  cardSet = value;
+};
+
+const setLevel = (value) => {
+  levelOfDifficulty = value;
+};
+
+export { getCardSetName, getFieldSize, setLevel, setCardSet };
