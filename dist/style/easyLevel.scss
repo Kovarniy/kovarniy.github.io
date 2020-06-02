@@ -1,25 +1,26 @@
 @media (max-width: 1200px) {
-    height: 230px;
-    margin: 6px 3px;
-  }
-  @media (max-width: 992px) {
-    height: 210px;
-    width: 24%;
-  }
-  @media (max-width: 992px) and (max-height: 415px) {
-    height: 170px;
-    width: 15%;
-  }
-  @media (max-width: 767px) {
-    margin: 4px 2px;
-    height: 140px;
-  }
-  @media (max-width: 767px) and (max-height: 415px) {
-    margin: 4px 2px;
-    height: 110px;
-    width: 110px;
-  }
-  @media (max-width: 576px) {
-    width: 80px;
-    height: 80px;
-  }
+  // Этот размер мне не нравится
+  width: 20%;
+  margin: 6px 3px;
+}
+@media (max-width: 992px) {
+  height: 210px;
+  width: 24%;
+}
+@media (max-width: 992px) and (max-height: 415px) {
+  height: 170px;
+  width: 15%;
+}
+@media (max-width: 767px) {
+  margin: 4px 2px;
+  height: 140px;
+}
+@media (max-width: 767px) and (max-height: 415px) {
+  margin: 4px 2px;
+  height: 110px;
+  width: 110px;
+}
+@media (max-width: 576px) {
+  width: 80px;
+  height: 80px;
+}
