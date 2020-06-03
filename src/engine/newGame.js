@@ -3,6 +3,7 @@ import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { genetateGameField } from "../engine/gameFieldActivity.js";
+import { playSound } from "../algorithms/sounds.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";
 
@@ -72,6 +73,7 @@ const createGameMatrix = async (fieldSize, cardSetName) => {
 //
 
 const startGame = () => {
+  playSound("dist/sound/cardsLayout.mp3");
   const fieldSize = getFieldSize();
   const cardSetName = getCardSetName();
   genetateGameField(fieldSize);

@@ -7,6 +7,7 @@ import {
   levelOfDifficulty,
   getCardSetName,
 } from "../engine/settings.js";
+import { playSound } from "../algorithms/sounds.js";
 
 // create settings selectors
 const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
@@ -46,6 +47,7 @@ const openGameSettings = () => {
 
   let button = document.createElement("button");
   button.onclick = function () {
+    playSound("dist/sound/buttonClick.mp3");
     renderGameMenu("game-menu");
   };
   button.classList.add("menu-btn");

@@ -1,6 +1,7 @@
 import { getFieldSize } from "../engine/settings.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { showEndGameWindow } from "../engine/gameFieldActivity.js";
+import { playSound } from "../algorithms/sounds.js";
 
 const clickCounter = (count) => {
   const clickBar = document.getElementById("countClick");
@@ -48,6 +49,7 @@ const rollEnabled = () => {
 
 const checkEndGame = () => {
   if (getFieldSize() == gameState.totalCountUpCards) {
+    playSound("dist/sound/endGame.mp3");
     gameState.stopwatch.stop();
     showEndGameWindow();
   }
@@ -55,6 +57,7 @@ const checkEndGame = () => {
 
 let countUpCards = 0;
 const rollCard = (div) => {
+  playSound("dist/sound/upCard.mp3");
   // this code work only with non selected and not activated functions
   if (
     !div.hasAttribute("selected") &&
