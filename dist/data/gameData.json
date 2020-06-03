@@ -1,5 +1,5 @@
 {
-  "catSet": [
+  "Cats": [
     { "id": 0, "link": "dist/img/cards/cats/cat1.jpg" },
     { "id": 1, "link": "dist/img/cards/cats/cat2.jpg" },
     { "id": 2, "link": "dist/img/cards/cats/cat3.jpg" },

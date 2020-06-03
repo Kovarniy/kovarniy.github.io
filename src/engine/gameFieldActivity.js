@@ -2,19 +2,25 @@ import { rollCard } from "../events/crads-events.js";
 import { gameState } from "../engine/gameStatistics.js";
 import { selDifLvl, selectSardSet } from "../events/settnigs-events";
 import { newGame, openSettings } from "../events/buttons-clicks.js";
-import { getFieldSize } from "../engine/settings.js";
+import {
+  getFieldSize,
+  levelOfDifficulty,
+  getCardSetName,
+} from "../engine/settings.js";
 
-// create settings sekectors
-const createSelector = (inEl, func, parametrsArray) => {
+// create settings selectors
+const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
   let selector = document.createElement("select");
+  selector.setAttribute("id", "settings-selector");
 
   let inText = "";
   selector.onchange = function () {
-    func(selector.value);
+    selectorListner(selector.value);
   };
 
-  parametrsArray.forEach((el, ind) => {
-    if (ind === 0) inText += `<option selected value="${el}" >${el}</option>`;
+  parametrsArray.forEach((el) => {
+    if (activEl === el)
+      inText += `<option selected value="${el}" >${el}</option>`;
     else inText += `<option value="${el}">${el}</option>`;
   });
   selector.innerHTML = inText;
@@ -35,8 +41,8 @@ const openGameSettings = () => {
   div.setAttribute("id", "game-menu");
   doc.append(div);
 
-  createSelector(div, selDifLvl, ["Easy", "Medium", "Hard"]);
-  createSelector(div, selectSardSet, ["Cats", "Lenin"]);
+  createSelector(div, selDifLvl, ["Easy", "Medium", "Hard"], levelOfDifficulty);
+  createSelector(div, selectSardSet, ["Cats", "Lenin"], getCardSetName);
 
   let button = document.createElement("button");
   button.onclick = function () {

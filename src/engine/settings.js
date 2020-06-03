@@ -3,7 +3,7 @@
 // TODO: rewrite this cod to Object!!!
 
 let levelOfDifficulty = "Easy";
-let cardSet = "catSet";
+let cardSet = "Cats";
 
 const getFieldSize = () => {
   switch (levelOfDifficulty) {
@@ -30,4 +30,10 @@ const setLevel = (value) => {
   levelOfDifficulty = value;
 };
 
-export { getCardSetName, getFieldSize, setLevel, setCardSet };
+export {
+  getCardSetName,
+  getFieldSize,
+  setLevel,
+  setCardSet,
+  levelOfDifficulty,
+};
