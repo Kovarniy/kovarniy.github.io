@@ -99,6 +99,7 @@ const genetateGameField = (fieldSize) => {
 //
 // Game menu
 const renderGameMenu = (oldActivity) => {
+  console.log(oldActivity);
   removeField(`${oldActivity}`);
   const doc = document.getElementById("work-space");
   const div = document.createElement("div");
@@ -119,10 +120,13 @@ const addGameMenuListner = () => {
 //
 // Modal window
 const hiddenEndGameWindow = () => {
-  const backModal = document.getElementById("openModal");
-  backModal.style.visibility = "hidden";
   const modalWindow = document.getElementById("modalDialog");
+  document.getElementById("nick-name").value = "";
   modalWindow.style.top = "-999px";
+  setTimeout(() => {
+    const backModal = document.getElementById("openModal");
+    backModal.style.visibility = "hidden";
+  }, 500);
 };
 
 const showEndGameWindow = () => {

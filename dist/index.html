@@ -24,6 +24,7 @@
       <div class="container" id="work-space">
         <div id="game-menu">
           <button class="menu-btn" id="new-game-btn">New Game</button>
+          <button class="menu-btn" id="rating-btn">Rating</button>
           <button class="menu-btn" id="options-btn">Options</button>
         </div>
       </div>
@@ -31,19 +32,30 @@
     <footer>
       <div class="container">
         <p>
-          Game crated by Evgeniy Schemelinin aka Kovarniy
+          Game created by SP Team
         </p>
       </div>
     </footer>
     <div id="openModal" class="modal">
-      <div id="modalDialog">
+      <form id="modalDialog">
         <p>Congratulations you completed the game!</p>
         <p>Travel time:</p>
         <p>Number of Clicks:</p>
-        <button class="modal-btn" id="end-game-btn">
+        <p>
+          <label for="nick-name" class="nickname">Your nickname: </label
+          ><input
+            id="nick-name"
+            class="nickname"
+            type="text"
+            pattern="[A-Za-zА-Яа-яЁё0-9]{3,15}"
+            required
+            title="A-Za-zА-Яа-яЁё0-9"
+          />
+        </p>
+        <button type="submit" class="modal-btn" id="end-game-btn">
           Thanks!
         </button>
-      </div>
+      </form>
     </div>
   </body>
 </html>

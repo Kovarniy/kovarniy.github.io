@@ -10,18 +10,36 @@
 
 #game-menu .menu-btn {
   border: 1px solid black;
-  border-radius: 45%;
+  border-radius: 50%;
   margin: 5px;
   padding: 50px;
   font-size: 28px;
-  width: 300px;
+  font-family: Luminari;
+  width: 100%;
   background-color: #fff;
-  color: black;
+  color: Black;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 #game-menu .menu-btn:focus {
   outline: none !important;
   color: #ffebbd;
 }
-/*# sourceMappingURL=buttons.css.map */
+
+#game-menu .menu-btn:hover {
+  background-color: #e6e6e6;
+  outline: none !important;
+  -webkit-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+
+#game-menu .menu-btn:active {
+  outline: none !important;
+  background-color: red;
+  -webkit-transform: rotate(-12deg);
+          transform: rotate(-12deg);
+}
