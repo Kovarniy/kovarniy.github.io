@@ -1,6 +1,6 @@
-import { getFieldSize } from "../engine/settings.js";
+import { getFieldSize } from "../engine/gameSettings.js";
 import { gameState } from "../engine/gameStatistics.js";
-import { showEndGameWindow } from "../engine/gameFieldActivity.js";
+import { showEndGameWindow } from "../engine/gameLayout.js";
 import { playSound } from "../algorithms/sounds.js";
 
 const clickCounter = (count) => {

@@ -13,7 +13,7 @@ const gameState = {
 
 const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
-  console.log(typeof playerName);
+
   // TODO придумать, как начислять очки
   const countClicks = gameState.countClicks; // получение количества очков
   const trevelTime = gameState.stopwatch.currentTime; // получение строки с количеством секнд
@@ -37,4 +37,14 @@ const saveGameResult = () => {
   }
 };
 
-export { gameState, saveGameResult };
+const getGameResults = () => {
+  const gameRating = [localStorage.length];
+  let ind = 0;
+  for (let key in localStorage) {
+    gameRating[ind] = [key, localStorage.getItem(key)];
+    ind++;
+  }
+  return gameRating;
+};
+
+export { gameState, saveGameResult, getGameResults };

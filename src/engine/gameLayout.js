@@ -1,17 +1,17 @@
 import { rollCard } from "../events/crads-events.js";
-import { gameState } from "../engine/gameStatistics.js";
+import { gameState, getGameResults } from "./gameStatistics.js";
 import { selDifLvl, selectSardSet } from "../events/settnigs-events";
-import { newGame, openSettings } from "../events/buttons-clicks.js";
+import { newGame, openRating, openSettings } from "../events/buttons-clicks.js";
 import {
   getFieldSize,
   levelOfDifficulty,
   getCardSetName,
-} from "../engine/settings.js";
+} from "./gameSettings.js";
 import { playSound } from "../algorithms/sounds.js";
 
-// create settings selectors
+// create settings selectors and buttons
 const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
-  let selector = document.createElement("select");
+  const selector = document.createElement("select");
   selector.setAttribute("id", "settings-selector");
 
   let inText = "";
@@ -29,22 +29,7 @@ const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
   inEl.append(selector);
 };
 
-// input parameter - elemet which must be removed
-const removeField = (elemeintId) => {
-  const removedActivity = document.getElementById(elemeintId);
-  removedActivity.remove();
-};
-
-const openGameSettings = () => {
-  removeField("game-menu");
-  const doc = document.getElementById("work-space");
-  let div = document.createElement("div");
-  div.setAttribute("id", "game-menu");
-  doc.append(div);
-
-  createSelector(div, selDifLvl, ["Easy", "Medium", "Hard"], levelOfDifficulty);
-  createSelector(div, selectSardSet, ["Cats", "Lenin"], getCardSetName);
-
+const createBackBtn = (context) => {
   let button = document.createElement("button");
   button.onclick = function () {
     playSound("dist/sound/buttonClick.mp3");
@@ -53,8 +38,39 @@ const openGameSettings = () => {
   button.classList.add("menu-btn");
   button.innerText = "Back";
   button.setAttribute("id", "back-to-main-menu-btn");
-  div.append(button);
+  context.append(button);
 };
+
+//------------------------------------------------
+
+// input parameter - elemet which must be removed
+const removeField = (elemeintId) => {
+  const removedActivity = document.getElementById(elemeintId);
+  removedActivity.remove();
+};
+
+const renderGameSettings = () => {
+  removeField("game-menu");
+  const workSpace = document.getElementById("work-space");
+  let settingsMenu = document.createElement("div");
+  settingsMenu.setAttribute("id", "game-menu");
+  workSpace.append(settingsMenu);
+
+  createSelector(
+    settingsMenu,
+    selDifLvl,
+    ["Easy", "Medium", "Hard"],
+    levelOfDifficulty
+  );
+  createSelector(
+    settingsMenu,
+    selectSardSet,
+    ["Cats", "Lenin"],
+    getCardSetName
+  );
+  createBackBtn(settingsMenu);
+};
+//------------------------------------------------
 
 // game field
 const addInfoBar = () => {
@@ -96,15 +112,16 @@ const genetateGameField = (fieldSize) => {
   addInfoBar();
   addCardsOnField(fieldSize);
 };
-//
+//------------------------------------------------
+
 // Game menu
 const renderGameMenu = (oldActivity) => {
-  console.log(oldActivity);
   removeField(`${oldActivity}`);
   const doc = document.getElementById("work-space");
   const div = document.createElement("div");
   div.setAttribute("id", "game-menu");
   div.innerHTML = `<button class="menu-btn" id="new-game-btn">New Game</button>
+                   <button class="menu-btn" id="rating-btn">Rating</button>
                    <button class="menu-btn" id="options-btn">Options</button>`;
   doc.append(div);
   addGameMenuListner();
@@ -112,12 +129,35 @@ const renderGameMenu = (oldActivity) => {
 
 const addGameMenuListner = () => {
   const newGameBtn = document.getElementById("new-game-btn");
+  const ratingBtn = document.getElementById("rating-btn");
   const optionsBtn = document.getElementById("options-btn");
   newGameBtn.onclick = newGame;
+  ratingBtn.onclick = openRating;
   optionsBtn.onclick = openSettings;
+};
+//------------------------------------------------
+
+// rating
+const renderRating = () => {
+  removeField("game-menu");
+  const workSpace = document.getElementById("work-space");
+  let div = document.createElement("div");
+  div.setAttribute("id", "game-menu");
+  workSpace.append(div);
+  const ratingMenu = document.getElementById("game-menu");
+
+  const gameResults = getGameResults();
+  console.log(gameResults);
+  gameResults.forEach((element, key) => {
+    const playerInfo = document.createElement("p");
+    playerInfo.innerText = `${key} ${element}`;
+    ratingMenu.append(playerInfo);
+  });
+  createBackBtn(ratingMenu);
 };
 
 //
+
 // Modal window
 const hiddenEndGameWindow = () => {
   const modalWindow = document.getElementById("modalDialog");
@@ -134,17 +174,16 @@ const showEndGameWindow = () => {
   backModal.style.visibility = "visible";
   const modalWindow = document.getElementById("modalDialog");
   modalWindow.style.top = "0px";
-  console.log(modalWindow.childNodes[3]);
-  console.log(modalWindow.childNodes[5]);
   modalWindow.childNodes[3].innerText = `Travel time: ${gameState.stopwatch.currentTime}`;
   modalWindow.childNodes[5].innerText = `Number of Clicks: ${gameState.countClicks}`;
 };
 //
 
 export {
-  openGameSettings,
+  renderGameSettings,
   genetateGameField,
   showEndGameWindow,
   renderGameMenu,
   hiddenEndGameWindow,
+  renderRating,
 };

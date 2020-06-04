@@ -1,8 +1,8 @@
-import { getCardSetName, getFieldSize } from "./settings.js";
+import { getCardSetName, getFieldSize } from "./gameSettings.js";
 import { randomInteger } from "../algorithms/numeric.js";
 import { getJsonFromUrl } from "../algorithms/requests.js";
 import { gameState } from "../engine/gameStatistics.js";
-import { genetateGameField } from "../engine/gameFieldActivity.js";
+import { genetateGameField } from "./gameLayout.js";
 import { playSound } from "../algorithms/sounds.js";
 
 const GAME_DATA_URL = "/dist/data/gameData.json";

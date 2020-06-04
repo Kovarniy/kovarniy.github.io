@@ -1,9 +1,9 @@
 import {
-  openGameSettings,
+  renderGameSettings,
   renderGameMenu,
   hiddenEndGameWindow,
-  showEndGameWindow,
-} from "../engine/gameFieldActivity.js";
+  renderRating,
+} from "../engine/gameLayout.js";
 import { startGame } from "../engine/newGame.js";
 import { gameState, saveGameResult } from "../engine/gameStatistics.js";
 import { playSound } from "../algorithms/sounds.js";
@@ -16,7 +16,12 @@ const newGame = () => {
 
 const openSettings = () => {
   playSound("dist/sound/buttonClick.mp3");
-  openGameSettings();
+  renderGameSettings();
+};
+
+const openRating = () => {
+  playSound("dist/sound/buttonClick.mp3");
+  renderRating();
 };
 
 const endGame = () => {
@@ -28,4 +33,4 @@ const endGame = () => {
   return false;
 };
 
-export { newGame, openSettings, endGame };
+export { newGame, openRating, openSettings, endGame };
