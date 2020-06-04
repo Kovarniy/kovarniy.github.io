@@ -13,6 +13,7 @@ const gameState = {
 
 const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
+  console.log(playerName);
 
   // TODO придумать, как начислять очки
   const countClicks = gameState.countClicks; // получение количества очков
@@ -41,8 +42,11 @@ const getGameResults = () => {
   const gameRating = [localStorage.length];
   let ind = 0;
   for (let key in localStorage) {
-    gameRating[ind] = [key, localStorage.getItem(key)];
-    ind++;
+    if (localStorage.hasOwnProperty(key)) {
+      console.log(`${key}, ${localStorage.getItem(key)}`);
+      gameRating[ind] = [key, localStorage.getItem(key)];
+      ind++;
+    }
   }
   return gameRating;
 };

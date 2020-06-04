@@ -5,6 +5,7 @@ import {
   endGame,
 } from "./events/buttons-clicks.js";
 import "regenerator-runtime/runtime.js";
+import { showEndGameWindow } from "./engine/gameLayout.js";
 
 window.onload = () => {
   const newGameBtn = document.getElementById("new-game-btn");
@@ -15,4 +16,5 @@ window.onload = () => {
   ratingBtn.onclick = openRating;
   optionsBtn.onclick = openSettings;
   endGameBtn.onsubmit = endGame;
+  //showEndGameWindow();
 };
