@@ -26,9 +26,9 @@ const openRating = () => {
 
 const endGame = () => {
   playSound("dist/sound/buttonClick.mp3");
-  hiddenEndGameWindow();
   saveGameResult();
   gameState.reset();
+  hiddenEndGameWindow();
   setTimeout(renderGameMenu, 300, "game-field");
   return false;
 };

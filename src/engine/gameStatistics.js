@@ -13,6 +13,7 @@ const gameState = {
 
 const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
+  console.log(playerName);
 
   // TODO придумать, как начислять очки
   const countClicks = gameState.countClicks; // получение количества очков
