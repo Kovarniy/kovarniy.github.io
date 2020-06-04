@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "easyLevel.scss"
+        "hardLevel.scss"
     ],
     "names": [],
-    "file": "easyLevel.css"
+    "file": "hardLevel.css"
 }
