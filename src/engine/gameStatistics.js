@@ -42,8 +42,11 @@ const getGameResults = () => {
   const gameRating = [localStorage.length];
   let ind = 0;
   for (let key in localStorage) {
-    gameRating[ind] = [key, localStorage.getItem(key)];
-    ind++;
+    if (localStorage.hasOwnProperty(key)) {
+      console.log(`${key}, ${localStorage.getItem(key)}`);
+      gameRating[ind] = [key, localStorage.getItem(key)];
+      ind++;
+    }
   }
   return gameRating;
 };
