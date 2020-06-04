@@ -57,9 +57,9 @@
 }
 
 .medium {
-  // TODO: подключить стили
+  @import "mediumLevel.scss";
 }
 
 .hard {
-  // TODO: подключить стили
+  @import "hardLevel.scss";
 }

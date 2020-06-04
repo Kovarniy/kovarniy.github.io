@@ -101,6 +101,8 @@ footer {
 }
 
 #work-space #game-field #infoBar {
+  padding-left: 6px;
+  padding-right: 6px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,22 +190,21 @@ footer {
 
 @media (max-width: 1200px) {
   #work-space #game-field .easy {
-    width: 20%;
-    margin: 6px 3px;
+    height: 190px;
+    width: 14%;
   }
 }
 
 @media (max-width: 992px) {
   #work-space #game-field .easy {
-    height: 210px;
-    width: 24%;
+    height: 180px;
+    width: 20%;
   }
 }
 
 @media (max-width: 992px) and (max-height: 415px) {
   #work-space #game-field .easy {
-    height: 170px;
-    width: 15%;
+    width: 22%;
   }
 }
 
@@ -217,15 +218,109 @@ footer {
 @media (max-width: 767px) and (max-height: 415px) {
   #work-space #game-field .easy {
     margin: 4px 2px;
-    height: 110px;
-    width: 110px;
+    height: 115px;
+    width: 115px;
   }
 }
 
 @media (max-width: 576px) {
   #work-space #game-field .easy {
-    width: 80px;
+    width: 25%;
     height: 80px;
+  }
+}
+
+@media (max-width: 2200px) {
+  #work-space #game-field .medium {
+    height: 220px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #work-space #game-field .medium {
+    height: 150px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) {
+  #work-space #game-field .medium {
+    height: 140px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  #work-space #game-field .medium {
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  #work-space #game-field .medium {
+    height: 110px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  #work-space #game-field .medium {
+    width: 15%;
+  }
+}
+
+@media (max-width: 576px) {
+  #work-space #game-field .medium {
+    width: 25%;
+    height: 80px;
+  }
+}
+
+@media (max-width: 2200px) {
+  #work-space #game-field .hard {
+    height: 165px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #work-space #game-field .hard {
+    width: 14%;
+    height: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  #work-space #game-field .hard {
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  #work-space #game-field .hard {
+    height: 125px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  #work-space #game-field .hard {
+    margin: 4px 2px;
+    height: 90px;
+    width: 14%;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  #work-space #game-field .hard {
+    margin: 4px 2px;
+    width: 14%;
+  }
+}
+
+@media (max-width: 576px) {
+  #work-space #game-field .hard {
+    width: 23%;
   }
 }
 
