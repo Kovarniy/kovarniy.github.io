@@ -12,7 +12,7 @@ import { playSound } from "../algorithms/sounds.js";
 // create settings selectors and buttons
 const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
   const selector = document.createElement("select");
-  selector.setAttribute("id", "settings-selector");
+  selector.classList.add("settingsSelector");
 
   let inText = "";
   selector.onchange = function () {
