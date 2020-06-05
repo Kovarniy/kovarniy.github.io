@@ -1,6 +1,6 @@
-import { getFieldSize } from "../engine/settings.js";
+import { getFieldSize } from "../engine/gameSettings.js";
 import { gameState } from "../engine/gameStatistics.js";
-import { showEndGameWindow } from "../engine/gameFieldActivity.js";
+import { showEndGameWindow } from "../engine/gameLayout.js";
 import { playSound } from "../algorithms/sounds.js";
 
 const clickCounter = (count) => {
@@ -57,12 +57,12 @@ const checkEndGame = () => {
 
 let countUpCards = 0;
 const rollCard = (div) => {
-  playSound("dist/sound/upCard.mp3");
   // this code work only with non selected and not activated functions
   if (
     !div.hasAttribute("selected") &&
     div.getAttribute("activated") === "false"
   ) {
+    playSound("dist/sound/upCard.mp3");
     gameState.countClicks += 1;
     clickCounter(gameState.countClicks);
     console.log(gameState);

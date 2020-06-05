@@ -1,10 +1,11 @@
 import {
-  openGameSettings,
+  renderGameSettings,
   renderGameMenu,
   hiddenEndGameWindow,
-} from "../engine/gameFieldActivity.js";
+  renderRating,
+} from "../engine/gameLayout.js";
 import { startGame } from "../engine/newGame.js";
-import { gameState } from "../engine/gameStatistics.js";
+import { gameState, saveGameResult } from "../engine/gameStatistics.js";
 import { playSound } from "../algorithms/sounds.js";
 
 // This btn removed game-menu and uploaded game-field wich cards
@@ -15,15 +16,21 @@ const newGame = () => {
 
 const openSettings = () => {
   playSound("dist/sound/buttonClick.mp3");
-  openGameSettings();
-  
+  renderGameSettings();
+};
+
+const openRating = () => {
+  playSound("dist/sound/buttonClick.mp3");
+  renderRating();
 };
 
 const endGame = () => {
   playSound("dist/sound/buttonClick.mp3");
-  hiddenEndGameWindow();
-  renderGameMenu("game-field");
+  saveGameResult();
   gameState.reset();
+  hiddenEndGameWindow();
+  setTimeout(renderGameMenu, 300, "game-field");
+  return false;
 };
 
-export { newGame, openSettings, endGame };
+export { newGame, openRating, openSettings, endGame };

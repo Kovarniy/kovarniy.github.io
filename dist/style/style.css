@@ -101,6 +101,8 @@ footer {
 }
 
 #work-space #game-field #infoBar {
+  padding-left: 6px;
+  padding-right: 6px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,23 +190,21 @@ footer {
 
 @media (max-width: 1200px) {
   #work-space #game-field .easy {
-    height: 200px;
-    width: 20%;
-    margin: 6px 3px;
+    height: 190px;
+    width: 14%;
   }
 }
 
 @media (max-width: 992px) {
   #work-space #game-field .easy {
-    height: 210px;
-    width: 24%;
+    height: 180px;
+    width: 20%;
   }
 }
 
 @media (max-width: 992px) and (max-height: 415px) {
   #work-space #game-field .easy {
-    height: 170px;
-    width: 15%;
+    width: 22%;
   }
 }
 
@@ -218,15 +218,109 @@ footer {
 @media (max-width: 767px) and (max-height: 415px) {
   #work-space #game-field .easy {
     margin: 4px 2px;
-    height: 110px;
-    width: 110px;
+    height: 115px;
+    width: 115px;
   }
 }
 
 @media (max-width: 576px) {
   #work-space #game-field .easy {
-    width: 80px;
+    width: 25%;
     height: 80px;
+  }
+}
+
+@media (max-width: 2200px) {
+  #work-space #game-field .medium {
+    height: 220px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #work-space #game-field .medium {
+    height: 150px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) {
+  #work-space #game-field .medium {
+    height: 140px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  #work-space #game-field .medium {
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  #work-space #game-field .medium {
+    height: 110px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  #work-space #game-field .medium {
+    width: 15%;
+  }
+}
+
+@media (max-width: 576px) {
+  #work-space #game-field .medium {
+    width: 25%;
+    height: 80px;
+  }
+}
+
+@media (max-width: 2200px) {
+  #work-space #game-field .hard {
+    height: 165px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #work-space #game-field .hard {
+    width: 14%;
+    height: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  #work-space #game-field .hard {
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) and (max-height: 415px) {
+  #work-space #game-field .hard {
+    height: 125px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 767px) {
+  #work-space #game-field .hard {
+    margin: 4px 2px;
+    height: 90px;
+    width: 14%;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 415px) {
+  #work-space #game-field .hard {
+    margin: 4px 2px;
+    width: 14%;
+  }
+}
+
+@media (max-width: 576px) {
+  #work-space #game-field .hard {
+    width: 23%;
   }
 }
 
@@ -242,19 +336,38 @@ footer {
 
 #game-menu .menu-btn {
   border: 1px solid black;
-  border-radius: 45%;
+  border-radius: 50%;
   margin: 5px;
   padding: 50px;
   font-size: 28px;
-  width: 300px;
+  font-family: Luminari;
+  width: 100%;
   background-color: #fff;
-  color: black;
+  color: Black;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 #game-menu .menu-btn:focus {
   outline: none !important;
   color: #ffebbd;
+}
+
+#game-menu .menu-btn:hover {
+  background-color: #e6e6e6;
+  outline: none !important;
+  -webkit-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+
+#game-menu .menu-btn:active {
+  outline: none !important;
+  background-color: red;
+  -webkit-transform: rotate(-12deg);
+          transform: rotate(-12deg);
 }
 
 #openModal {
@@ -303,5 +416,8 @@ footer {
 
 #modalDialog .modal-btn:focus {
   outline: none !important;
-  color: #ffebbd;
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  -webkit-transform: skewY(-1deg);
+          transform: skewY(-1deg);
 }

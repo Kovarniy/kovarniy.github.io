@@ -1,4 +1,4 @@
-import { setLevel, setCardSet } from "../engine/settings.js";
+import { setLevel, setCardSet } from "../engine/gameSettings.js";
 
 const selDifLvl = (value) => {
   setLevel(value);

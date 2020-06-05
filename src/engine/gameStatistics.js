@@ -11,4 +11,44 @@ const gameState = {
   },
 };
 
-export { gameState };
+const saveGameResult = () => {
+  const playerName = document.getElementById("nick-name").value;
+  console.log(playerName);
+
+  // TODO придумать, как начислять очки
+  const countClicks = gameState.countClicks; // получение количества очков
+  const trevelTime = gameState.stopwatch.currentTime; // получение строки с количеством секнд
+  // пока тут балванка, но этот алгоритм нужно будет разработать
+  const playerPoints = countClicks;
+
+  try {
+    if (localStorage.getItem(playerName) === null && playerName !== "") {
+      console.log("save to storige");
+      localStorage.setItem(playerName, playerPoints.toString());
+    } else {
+      const oldCountPoints = localStorage.getItem(playerName);
+      console.log(oldCountPoints);
+      if (playerPoints > parseInt(oldCountPoints))
+        localStorage.setItem(playerName, playerPoints.toString());
+    }
+  } catch (e) {
+    if (e == QUOTA_EXCEEDED_ERR) {
+      console.log("Превышен лимит");
+    }
+  }
+};
+
+const getGameResults = () => {
+  const gameRating = [localStorage.length];
+  let ind = 0;
+  for (let key in localStorage) {
+    if (localStorage.hasOwnProperty(key)) {
+      console.log(`${key}, ${localStorage.getItem(key)}`);
+      gameRating[ind] = [key, localStorage.getItem(key)];
+      ind++;
+    }
+  }
+  return gameRating;
+};
+
+export { gameState, saveGameResult, getGameResults };

@@ -41,6 +41,7 @@
 
   .modal-btn:focus {
     outline: none !important;
-    color: #ffebbd;
+    transform: skewX(-10deg);
+    transform: skewY(-1deg);
   }
 }

@@ -1,4 +1,14 @@
-.menu-btn {
+#game-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#game-menu .menu-btn {
   border: 1px solid black;
   border-radius: 50%;
   margin: 5px;
@@ -15,19 +25,19 @@
   transition: transform 1s, -webkit-transform 1s;
 }
 
-.menu-btn:focus {
+#game-menu .menu-btn:focus {
   outline: none !important;
   color: #ffebbd;
 }
 
-.menu-btn:hover {
+#game-menu .menu-btn:hover {
   background-color: #e6e6e6;
   outline: none !important;
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
 }
 
-.menu-btn:active {
+#game-menu .menu-btn:active {
   outline: none !important;
   background-color: red;
   -webkit-transform: rotate(-12deg);
