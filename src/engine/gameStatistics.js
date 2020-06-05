@@ -27,6 +27,7 @@ const saveGameResult = () => {
   const trevelTime = gameState.stopwatch.currentTime; // получение строки с количеством секнд
   
   const TimerForPoints =parseInt (trevelTime);
+  
 //подсчет очков по формуле
   const playerPoints = Math.trunc ( ( ( ( 600 - TimerForPoints ) ) * countClicks ) / getFieldSize ( levelOfDifficulty ) )  ;
 
