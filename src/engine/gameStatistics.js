@@ -1,4 +1,5 @@
 import { RenderingStopwatch } from "../algorithms/stopwatch.js";
+import { levelOfDifficulty, getFieldSize } from "./gameSettings.js";
 
 const gameState = {
   totalCountUpCards: 0,
@@ -17,9 +18,14 @@ const saveGameResult = () => {
 
   // TODO придумать, как начислять очки
   const countClicks = gameState.countClicks; // получение количества очков
-  const trevelTime = gameState.stopwatch.currentTime; // получение строки с количеством секнд
-  // пока тут балванка, но этот алгоритм нужно будет разработать
-  const playerPoints = countClicks;
+  const trevelTime = gameState.stopwatch.getSecond; // получение строки с количеством секнд
+  console.log(trevelTime);
+  //подсчет очков по формуле
+  const playerPoints = Math.trunc(
+    ((600 - TimerForPoints) * countClicks) / getFieldSize()
+  );
+
+  console.log(playerPoints);
 
   try {
     if (localStorage.getItem(playerName) === null && playerName !== "") {

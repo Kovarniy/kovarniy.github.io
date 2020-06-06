@@ -174,7 +174,7 @@ const showEndGameWindow = () => {
   backModal.style.visibility = "visible";
   const modalWindow = document.getElementById("modalDialog");
   modalWindow.style.top = "0px";
-  modalWindow.childNodes[3].innerText = `Travel time: ${gameState.stopwatch.currentTime}`;
+  modalWindow.childNodes[3].innerText = `Travel time: ${gameState.stopwatch.toString()}`;
   modalWindow.childNodes[5].innerText = `Number of Clicks: ${gameState.countClicks}`;
 };
 //

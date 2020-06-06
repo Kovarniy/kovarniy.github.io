@@ -30,7 +30,11 @@ class Stopwatch {
     clearInterval(this.timerId);
   }
 
-  get currentTime() {
+  get getSecond() {
+    return this.sec + this.min * 60 + this.hour * 3600;
+  }
+
+  toString() {
     let sHour = this.hour < 10 ? `0${this.hour}` : this.hour;
     let timeString = `${sHour}:`;
     let sMin = this.min < 10 ? `0${this.min}` : this.min;
@@ -50,7 +54,7 @@ class RenderingStopwatch extends Stopwatch {
   tick(obj) {
     super.tick(obj);
     let timeEl = document.getElementById(obj.elId);
-    timeEl.innerHTML = "<b>Time:</b> " + obj.currentTime;
+    timeEl.innerHTML = "<b>Time:</b> " + obj.toString();
   }
 }
 
