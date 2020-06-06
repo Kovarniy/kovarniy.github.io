@@ -1388,7 +1388,7 @@ var renderGameSettings = function renderGameSettings() {
   settingsMenu.setAttribute("id", "game-menu");
   workSpace.append(settingsMenu);
   createSelector(settingsMenu, _events_settnigs_events__WEBPACK_IMPORTED_MODULE_2__["selDifLvl"], ["Easy", "Medium", "Hard"], _gameSettings_js__WEBPACK_IMPORTED_MODULE_4__["levelOfDifficulty"]);
-  createSelector(settingsMenu, _events_settnigs_events__WEBPACK_IMPORTED_MODULE_2__["selectSardSet"], ["Cats", "Lenin"], _gameSettings_js__WEBPACK_IMPORTED_MODULE_4__["getCardSetName"]);
+  createSelector(settingsMenu, _events_settnigs_events__WEBPACK_IMPORTED_MODULE_2__["selectSardSet"], ["Cats", "Animals"], _gameSettings_js__WEBPACK_IMPORTED_MODULE_4__["getCardSetName"]);
   createBackBtn(settingsMenu);
 }; //------------------------------------------------
 // game field
