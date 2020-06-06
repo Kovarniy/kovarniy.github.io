@@ -3,7 +3,6 @@
   background-color: #ffebbd;
   color: rgb(36, 31, 5);
   font-size: inherit;
-  font-family: "Berlin Sans FB";
   padding: .5em;
   padding-right: 2.5em; 
   border: 0;
@@ -11,13 +10,6 @@
   border-radius: 5px;
   text-indent: 0.01px;
   text-overflow: '';
-  -webkit-appearance: button;
-  box-shadow: 0 4px 20px rgba($color: #000000, $alpha: 0.3), 
-  inset 0 2px 0 rgba($color: #ffffff, $alpha: 0.6), 
-  0 2px 0 rgba($color: #000000, $alpha: 0.2);
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
 }
 
-.settingsSelector:active{
-  box-shadow: inset 0 2px 8px rgba($color: #000000, $alpha: 0.5);
-  color: rgba($color: #271303, $alpha: 1.0);
-}
