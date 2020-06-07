@@ -8,21 +8,46 @@
           flex-direction: column;
 }
 
+#game-menu .settingsSelector {
+  background-color: #ffebbd;
+  color: #241f05;
+  font-size: inherit;
+  font-family: "Berlin Sans FB";
+  padding: .5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 10px;
+  border-radius: 5px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+#game-menu .settingsSelector:active {
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: #271303;
+}
+
 #game-menu .menu-btn {
-  border: 1px solid black;
-  border-radius: 50%;
-  margin: 5px;
+  border: 1px hidden;
+  border-radius: 70%;
+  margin: 10px;
   padding: 50px;
-  font-size: 28px;
-  font-family: Luminari;
+  font-size: 30px;
+  font-family: "Berlin Sans FB";
   width: 100%;
-  background-color: #fff;
-  color: Black;
+  background-color: #ffebbd;
+  color: rgba(39, 19, 3, 0.8);
   cursor: pointer;
   -webkit-transition: -webkit-transform 1s;
   transition: -webkit-transform 1s;
   transition: transform 1s;
   transition: transform 1s, -webkit-transform 1s;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 #game-menu .menu-btn:focus {
@@ -31,15 +56,17 @@
 }
 
 #game-menu .menu-btn:hover {
-  background-color: #e6e6e6;
   outline: none !important;
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: #271303;
 }
 
 #game-menu .menu-btn:active {
   outline: none !important;
-  background-color: red;
+  background-color: #531616;
   -webkit-transform: rotate(-12deg);
           transform: rotate(-12deg);
 }

@@ -8,6 +8,7 @@ import {
   getCardSetName,
 } from "./gameSettings.js";
 import { playSound } from "../algorithms/sounds.js";
+import { gatCardsNames } from "./getDataFromDB.js";
 
 // create settings selectors and buttons
 const createSelector = (inEl, selectorListner, parametrsArray, activEl) => {
@@ -49,25 +50,22 @@ const removeField = (elemeintId) => {
   removedActivity.remove();
 };
 
-const renderGameSettings = () => {
+const renderGameSettings = async () => {
   removeField("game-menu");
   const workSpace = document.getElementById("work-space");
   let settingsMenu = document.createElement("div");
   settingsMenu.setAttribute("id", "game-menu");
   workSpace.append(settingsMenu);
 
+  const cardSets = await gatCardsNames();
   createSelector(
     settingsMenu,
     selDifLvl,
     ["Easy", "Medium", "Hard"],
     levelOfDifficulty
   );
-  createSelector(
-    settingsMenu,
-    selectSardSet,
-    ["Cats", "Animals"],
-    getCardSetName
-  );
+
+  createSelector(settingsMenu, selectSardSet, cardSets, getCardSetName);
   createBackBtn(settingsMenu);
 };
 //------------------------------------------------
@@ -147,11 +145,12 @@ const renderRating = () => {
   const ratingMenu = document.getElementById("game-menu");
 
   const gameResults = getGameResults();
-  console.log(gameResults);
   gameResults.forEach((element, key) => {
-    const playerInfo = document.createElement("p");
-    playerInfo.innerText = `${key} ${element}`;
-    ratingMenu.append(playerInfo);
+    if (key !== 0) {
+      const playerInfo = document.createElement("p");
+      playerInfo.innerText = `${key} ${element}`;
+      ratingMenu.append(playerInfo);
+    }
   });
   createBackBtn(ratingMenu);
 };
