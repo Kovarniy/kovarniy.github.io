@@ -1,5 +1,5 @@
 import { RenderingStopwatch } from "../algorithms/stopwatch.js";
-import { levelOfDifficulty, getFieldSize } from "./gameSettings.js";
+import { getFieldSize } from "./gameSettings.js";
 
 const gameState = {
   totalCountUpCards: 0,
@@ -12,19 +12,20 @@ const gameState = {
   },
 };
 
+const MAX_TIME = 600;
 const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
-  console.log(playerName);
+  const countClicks = gameState.countClicks;
+  const trevelTime = gameState.stopwatch.getSecond;
 
-  // TODO придумать, как начислять очки
-  const countClicks = gameState.countClicks; // получение количества очков
-  const trevelTime = gameState.stopwatch.getSecond; // получение строки с количеством секнд
-  console.log(trevelTime);
-  //подсчет очков по формуле
-  const playerPoints = Math.trunc(
-    ((600 - TimerForPoints) * countClicks) / getFieldSize()
-  );
-
+  let playerPoints;
+  if (trevelTime < MAX_TIME) {
+    playerPoints = Math.trunc(
+      ((MAX_TIME - trevelTime) * countClicks) / getFieldSize()
+    );
+  } else {
+    playerPoints = 100;
+  }
   console.log(playerPoints);
 
   try {
@@ -46,12 +47,9 @@ const saveGameResult = () => {
 
 const getGameResults = () => {
   const gameRating = [localStorage.length];
-  let ind = 0;
   for (let key in localStorage) {
-    if (localStorage.hasOwnProperty(key)) {
-      console.log(`${key}, ${localStorage.getItem(key)}`);
-      gameRating[ind] = [key, localStorage.getItem(key)];
-      ind++;
+    if (localStorage.hasOwnProperty(key) && key !== 0) {
+      gameRating.push([key, localStorage.getItem(key)]);
     }
   }
   return gameRating;
