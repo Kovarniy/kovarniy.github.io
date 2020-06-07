@@ -65,7 +65,7 @@ const renderGameSettings = () => {
   createSelector(
     settingsMenu,
     selectSardSet,
-    ["Cats", "Lenin"],
+    ["Cats", "Animals"],
     getCardSetName
   );
   createBackBtn(settingsMenu);

@@ -15,5 +15,22 @@
     { "id": 12, "link": "dist/img/cards/cats/cat13.jpg" },
     { "id": 13, "link": "dist/img/cards/cats/cat14.jpg" },
     { "id": 14, "link": "dist/img/cards/cats/cat15.jpg" }
+  ],
+  "Animals" : [
+    { "id": 0, "link": "dist/img/cards/ani/alien.jpg" },
+    { "id": 1, "link": "dist/img/cards/ani/alpaca.jpg" },
+    { "id": 2, "link": "dist/img/cards/ani/axolotl.jpg" },
+    { "id": 3, "link": "dist/img/cards/ani/cat.jpg" },
+    { "id": 4, "link": "dist/img/cards/ani/Cthulhu.jpg" },
+    { "id": 5, "link": "dist/img/cards/ani/dog.jpg" },
+    { "id": 6, "link": "dist/img/cards/ani/fox.jpg" },
+    { "id": 7, "link": "dist/img/cards/ani/hedgehog.jpg" },
+    { "id": 8, "link": "dist/img/cards/ani/jelly.jpg" },
+    { "id": 9, "link": "dist/img/cards/ani/koala.jpg" },
+    { "id": 10, "link": "dist/img/cards/ani/narwhal.jpg" },
+    { "id": 11, "link": "dist/img/cards/ani/otter.jpg" },
+    { "id": 12, "link": "dist/img/cards/ani/owl.jpg" },
+    { "id": 13, "link": "dist/img/cards/ani/roach.jpg" },
+    { "id": 14, "link": "dist/img/cards/ani/snail.jpg" }
   ]
 }
