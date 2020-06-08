@@ -14,7 +14,7 @@ const gameState = {
 };
 
 const MAX_TIME = 600;
-const saveGameResult = () => {
+const saveGameResult2 = () => {
   const playerName = document.getElementById("nick-name").value;
   const countClicks = gameState.countClicks;
   const travelTime = gameState.stopwatch.getSecond;
@@ -45,7 +45,7 @@ const saveGameResult = () => {
   }
 };
 
-const saveGameResult2 = () => {
+const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
   const countClicks = gameState.countClicks;
   const travelTime = gameState.stopwatch.getSecond;
@@ -90,7 +90,7 @@ const saveGameResult2 = () => {
 
 
 
-const getGameResults = () => {
+const getGameResults2 = () => {
   const gameRating = [localStorage.length];
   for (let key in localStorage) {
     if (localStorage.hasOwnProperty(key) && key !== 0) {
@@ -104,7 +104,7 @@ const setRateLvl = (value) => {
   rateLvl = value;
 };
 
-const getGameResults2 = () => {
+const getGameResults = () => {
   const rating = JSON.parse(localStorage.getItem(12));
   createSelector(
     game-menu,
