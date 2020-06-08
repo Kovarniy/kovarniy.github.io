@@ -1,0 +1,8 @@
+.ratingTable{
+    visibility: hidden;
+}
+
+.ratingTable.chosen{
+    visibility: visible;
+    font-size: 20px;
+}
