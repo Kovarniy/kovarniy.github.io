@@ -6,32 +6,24 @@
   font-size: 30px;
   font-family: "Berlin Sans FB";
   width: 100%;
-  background-color: rgba($color: #ffebbd, $alpha: 1.0);
+  background-color: rgba($color: #ffebbd, $alpha: 1);
   color: rgba($color: #271303, $alpha: 0.8);
   cursor: pointer;
   transition: transform 1s;
-  box-shadow: 0 4px 20px rgba($color: #000000, $alpha: 0.3), 
-  inset 0 2px 0 rgba($color: #ffffff, $alpha: 0.6), 
-  0 2px 0 rgba($color: #000000, $alpha: 0.2);
+  box-shadow: 0 4px 20px rgba($color: #000000, $alpha: 0.3),
+    inset 0 2px 0 rgba($color: #ffffff, $alpha: 0.6),
+    0 2px 0 rgba($color: #000000, $alpha: 0.2);
 }
 
-// TODO Нужно подобрать цвета кнопок
-// так же можно добавить дополнительный эффект при нажатии кнопки
-// например это может быть добавление тени
+.menu-btn:hover,
 .menu-btn:focus {
-  outline: none !important;
-  color: #ffebbd;
-}
-
-.menu-btn:hover {
-  //background-color: #e6e6e6;
   outline: none !important;
   transform: rotate(-8deg);
   box-shadow: inset 0 2px 8px rgba($color: #000000, $alpha: 0.5);
-  color: rgba($color: #271303, $alpha: 1.0);
+  color: rgba($color: #271303, $alpha: 1);
 }
 .menu-btn:active {
   outline: none !important;
-  background-color: rgb(83, 22, 22);
+  background-color: #fff0ce;
   transform: rotate(-12deg);
 }

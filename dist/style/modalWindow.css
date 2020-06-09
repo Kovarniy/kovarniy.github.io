@@ -17,10 +17,12 @@
   border-radius: 25px;
   padding: 20px;
   background-color: #b7ebfd;
-  border: 5px solid #2984a3;
-  min-width: 300px;
+  border: 7px solid #2984a3;
+  min-width: 250px;
   line-height: 1.5;
-  top: -999px;
+  top: -599px;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.4);
   -webkit-transition: 0.5s all;
   transition: 0.5s all;
 }
@@ -32,20 +34,58 @@
 #modalDialog .modal-btn {
   display: block;
   margin: 0 auto;
-  border: 1px solid black;
   border-radius: 25%;
   padding: 15px;
   font-size: 20px;
   width: 125px;
-  background-color: #fff;
   color: black;
+  border: 1px hidden;
+  border-radius: 70%;
+  font-family: "Berlin Sans FB";
+  background-color: #ffebbd;
+  color: rgba(39, 19, 3, 0.8);
   cursor: pointer;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-#modalDialog .modal-btn:focus {
+#modalDialog .modal-btn:focus,
+#modalDialog .modal-btn:hover {
   outline: none !important;
-  -webkit-transform: skewX(-10deg);
-          transform: skewX(-10deg);
-  -webkit-transform: skewY(-1deg);
-          transform: skewY(-1deg);
+  -webkit-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: #271303;
+}
+
+#modalDialog .modal-btn:active {
+  outline: none !important;
+  background-color: #fff0ce;
+  -webkit-transform: rotate(-12deg);
+          transform: rotate(-12deg);
+}
+
+#modalDialog #nick-name {
+  background-color: #fff0ce;
+  color: #241f05;
+  font-size: inherit;
+  font-family: "Berlin Sans FB";
+  border: 0;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+#modalDialog #nick-name:focus {
+  background-color: #fff0ce;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+#modalDialog .modal-btn:active {
+  background-color: #fff0ce;
 }

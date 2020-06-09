@@ -2,7 +2,15 @@
 /* Стили для демонстрации */
 
 body {
-  background: linear-gradient(180deg, rgba(136,222,248,1) 0%, rgba(163,234,255,1) 48%, rgba(218,246,255,1) 100%);
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(136, 222, 248, 1) 0%,
+    rgba(163, 234, 255, 1) 48%,
+    rgba(218, 246, 255, 1) 100%
+  );
+  background-color: rgb(218, 246, 255);
+  background-repeat: no-repeat;
+
   //background-color: #88def8;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -78,4 +86,3 @@ footer {
 @import "gameMenu.scss";
 
 @import "modalWindow.scss";
-
