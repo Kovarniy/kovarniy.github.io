@@ -17,12 +17,8 @@
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
+.menu-btn:hover,
 .menu-btn:focus {
-  outline: none !important;
-  color: #ffebbd;
-}
-
-.menu-btn:hover {
   outline: none !important;
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
@@ -33,7 +29,7 @@
 
 .menu-btn:active {
   outline: none !important;
-  background-color: #531616;
+  background-color: #fff0ce;
   -webkit-transform: rotate(-12deg);
           transform: rotate(-12deg);
 }
