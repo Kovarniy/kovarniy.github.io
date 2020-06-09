@@ -1,6 +1,6 @@
 import { rollCard } from "../events/crads-events.js";
 import { gameState, getGameResults } from "./gameStatistics.js";
-import { selDifLvl, selectSardSet } from "../events/settnigs-events";
+import { selDifLvl, selectSardSet, setRateLvl} from "../events/settnigs-events";
 import { newGame, openRating, openSettings } from "../events/buttons-clicks.js";
 import {
   getFieldSize,
@@ -41,6 +41,26 @@ const createBackBtn = (context) => {
   button.setAttribute("id", "back-to-main-menu-btn");
   context.append(button);
 };
+
+
+
+const createSlideBtn = (context,lvl) => {
+  let button = document.createElement("button");
+  let siblings = context.parentElement.children;
+  button.onclick = function () {
+   for (var i=0, child; child=siblings[i]; i++) {
+        child.classList.remove("chosen");
+   }
+    context.classList.add("chosen");
+  };
+  button.classList.add("btn");
+  button.classList.add(lvl);
+  button.innerText = lvl;
+  context.append(button);
+};
+
+
+
 
 //------------------------------------------------
 
@@ -135,6 +155,7 @@ const addGameMenuListner = () => {
 };
 //------------------------------------------------
 
+
 // rating
 const renderRating = () => {
   removeField("game-menu");
@@ -143,14 +164,49 @@ const renderRating = () => {
   div.setAttribute("id", "game-menu");
   workSpace.append(div);
   const ratingMenu = document.getElementById("game-menu");
-
-  const gameResults = getGameResults();
-  gameResults.forEach((element, key) => {
-    if (key !== 0) {
-      const playerInfo = document.createElement("p");
-      playerInfo.innerText = `${key} ${element}`;
-      ratingMenu.append(playerInfo);
+  ratingMenu.classList.add("btn-group");
+  let divEasy = document.createElement("div");
+  let divMedium = document.createElement("div");
+  let divHard = document.createElement("div");
+  divEasy.setAttribute("class", "ratingTable chosen");
+  divMedium.setAttribute("class", "ratingTable"); 
+  divHard.setAttribute("class", "ratingTable");
+  ratingMenu.append(divEasy,divMedium,divHard);
+  let divArr = [divEasy,divMedium,divHard];
+  createSlideBtn(divEasy, "easy");
+  createSlideBtn(divMedium, "medium");
+  createSlideBtn(divHard, "hard");  
+  let gameResultsEasy = getGameResults(12);
+  let gameResultsMedium = getGameResults(18);
+  let gameResultsHard = getGameResults(24);
+  const gameResults = [gameResultsEasy,gameResultsMedium,gameResultsHard];
+  gameResults.forEach(gameResult => {
+   let sorted = []; 
+   for (let [key, value] of Object.entries(gameResult)) {
+    sorted.push(value);
     }
+
+
+
+    sorted.forEach(obj => {
+        for (let [key, value] of Object.entries(obj)) {      
+          sorted=sorted.sort((a,b)=>(a.value>b.value)?1:(a.value<b.value)?-1:0)
+
+      }
+   });
+
+
+
+
+    sorted.forEach(obj => {
+      if(sorted.indexOf(obj)<10){
+        console.log(obj);
+        for (let [key, value] of Object.entries(obj)) {      
+          const playerInfo = document.createElement("p");    
+          playerInfo.innerText = `${sorted.indexOf(obj)+1}. ${key} : ${value}`; 
+          divArr[gameResults.indexOf(gameResult)].append(playerInfo);
+      }}
+   });
   });
   createBackBtn(ratingMenu);
 };
@@ -185,4 +241,5 @@ export {
   renderGameMenu,
   hiddenEndGameWindow,
   renderRating,
+  createSelector
 };

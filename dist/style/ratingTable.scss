@@ -1,16 +1,24 @@
 .ratingTable{
     visibility: hidden;
+    position: absolute;
 }
+.ratingTable.chosen{
+    margin-left: 50px;
+}
+
 
 .ratingTable.chosen p{
     visibility: visible;
     font-size: 20px;
     margin-left: 100px;
+    top: 250px;
 }
 
   .btn{
+    position: relative;
     cursor: pointer;
     float: left;
+    right:300px;
     height: 40px;
     width: 60px;
     background-color: #ffebbd;
@@ -28,4 +36,23 @@
 
     .btn:hover{
         box-shadow: inset 0 2px 8px rgba($color: #000000, $alpha: 0.5); 
+    }
+    .btn.easy{
+        position: absolute;
+        top:0px;
+        left:-150px;
+    }
+    .btn.medium{
+        position: absolute;
+        top:0px;
+        left:-200px;
+    }
+    .btn.hard{
+        position: absolute;
+        top:0px;
+        left:-300px;
+    }
+    .btn-group .menu-button{
+        position: absolute;
+        bottom: 0px;
     }

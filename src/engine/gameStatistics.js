@@ -1,5 +1,5 @@
 import { RenderingStopwatch } from "../algorithms/stopwatch.js";
-import { getFieldSize } from "./gameSettings.js";
+import { getFieldSize} from "./gameSettings.js";
 
 const gameState = {
   totalCountUpCards: 0,
@@ -12,47 +12,75 @@ const gameState = {
   },
 };
 
+
+function mapToObj(map){
+  const obj = {}
+  for (let [k,v] of map)
+    obj[k] = v
+  return obj
+}
+
+
 const MAX_TIME = 600;
+
 const saveGameResult = () => {
   const playerName = document.getElementById("nick-name").value;
   const countClicks = gameState.countClicks;
-  const trevelTime = gameState.stopwatch.getSecond;
-
+  const travelTime = gameState.stopwatch.getSecond;
+  const ratingEasyMap = new Map();
+  const ratingMediumMap = new Map();
+  const ratingHardMap = new Map();
+  const fieldsMap = new Map ([
+    [12, ratingEasyMap],
+    [18, ratingMediumMap],
+    [24, ratingHardMap]
+  ]);
   let playerPoints;
-  if (trevelTime < MAX_TIME) {
+  if (travelTime < MAX_TIME) {
     playerPoints = Math.trunc(
-      ((MAX_TIME - trevelTime) * countClicks) / getFieldSize()
+      ((MAX_TIME - travelTime) * countClicks) / getFieldSize()
     );
   } else {
     playerPoints = 100;
   }
-  console.log(playerPoints);
-
-  try {
-    if (localStorage.getItem(playerName) === null && playerName !== "") {
-      console.log("save to storige");
-      localStorage.setItem(playerName, playerPoints.toString());
-    } else {
-      const oldCountPoints = localStorage.getItem(playerName);
-      console.log(oldCountPoints);
+ let oldCountPoints;
+  const ratingThis = fieldsMap.get(getFieldSize());
+  let isInRating = false; 
+  let everythingElse = localStorage.getItem(getFieldSize());
+  for (let [key, value] of Object.entries(JSON.parse("["+localStorage.getItem(getFieldSize())+"]"))) {
+    if (parseInt(key)< 10) {
+      for (let [key2, value2] of Object.entries(value)){
+        if(key2==playerName){
+          oldCountPoints=value2
+          isInRating=true;
+        }
+      }
+    }
+  }
+  try { 
+    if (!isInRating) {
+      
+      ratingThis.set(playerName,playerPoints);
+      let myjsonmap = mapToObj(ratingThis);
+      localStorage.setItem(getFieldSize(), JSON.stringify(myjsonmap)+","+everythingElse);
+    } 
+    else {
       if (playerPoints > parseInt(oldCountPoints))
-        localStorage.setItem(playerName, playerPoints.toString());
+        ratingThis.set(playerName, playerPoints);
+        let myjsonmap = mapToObj(ratingThis);
+        localStorage.setItem(getFieldSize(), JSON.stringify(myjsonmap)+","+everythingElse);
     }
   } catch (e) {
     if (e == QUOTA_EXCEEDED_ERR) {
       console.log("Превышен лимит");
     }
   }
+}
+
+const getGameResults = (rateLevel) => {
+  const rating =JSON.parse("["+localStorage.getItem(rateLevel)+"]");
+  return rating;
 };
 
-const getGameResults = () => {
-  const gameRating = [localStorage.length];
-  for (let key in localStorage) {
-    if (localStorage.hasOwnProperty(key) && key !== 0) {
-      gameRating.push([key, localStorage.getItem(key)]);
-    }
-  }
-  return gameRating;
-};
 
-export { gameState, saveGameResult, getGameResults };
+export { gameState, saveGameResult, getGameResults};
