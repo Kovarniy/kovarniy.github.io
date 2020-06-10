@@ -140,8 +140,8 @@ const addGameMenuListner = () => {
 //------------------------------------------------
 
 // rating
-const renderRating = (domEl) => {
-  let gameResults = localStorage.getItem(levelOfDifficulty);
+const renderRating = (domEl, level) => {
+  let gameResults = localStorage.getItem(level);
 
   if (gameResults !== null) {
     gameResults = JSON.parse(gameResults);
@@ -153,8 +153,22 @@ const renderRating = (domEl) => {
   } else {
     const playerInfo = document.createElement("p");
     playerInfo.innerText = `You can be the first!`;
-    domEl.append(playerInfo);
+    domEl.prepend(playerInfo);
   }
+};
+
+const radioRatingInit = () => {
+  const lvls = ["Easy", "Medium", "Hard"];
+  lvls.forEach((el) => {
+    const domEl = document.getElementById(el);
+    domEl.onclick = function () {
+      removeField("rating");
+      let div = document.createElement("div");
+      div.setAttribute("id", "rating");
+      document.getElementById("radio-btns").after(div);
+      renderRating(document.getElementById("rating"), el);
+    };
+  });
 };
 
 const renderRatingMenu = () => {
@@ -163,18 +177,22 @@ const renderRatingMenu = () => {
   let div = document.createElement("div");
   div.setAttribute("id", "game-menu");
   div.innerHTML = `<div id="radio-btns">
-                      <input type="radio" id="Easy" name="level" value="Easy">
+                      <input type="radio" class="radio" id="Easy" name="level" value="Easy" checked>
                       <label for="Easy">Easy</label><br>
-                      <input type="radio" id="Medium" name="level" value="Medium">
+                      <input type="radio" class="radio" id="Medium" name="level" value="Medium">
                       <label for="Medium">Medium</label><br>
-                      <input type="radio" id="Hard" name="level" value="Hard">
+                      <input type="radio" class="radio" id="Hard" name="level" value="Hard">
                       <label for="other">Hard</label>
                    </div>
-                   <div id="rating"></div>`;
+                   <div id="rating"></div>
+                   <div id="btn-div"></div>`;
   workSpace.append(div);
+  createBackBtn(document.getElementById("btn-div"));
+
+  radioRatingInit();
+
   const ratingMenu = document.getElementById("rating");
-  renderRating(ratingMenu);
-  createBackBtn(ratingMenu);
+  renderRating(ratingMenu, "Easy");
 };
 
 //
