@@ -176,13 +176,19 @@ const renderRatingMenu = () => {
   const workSpace = document.getElementById("work-space");
   let div = document.createElement("div");
   div.setAttribute("id", "game-menu");
-  div.innerHTML = `<div id="radio-btns">
-                      <input type="radio" class="radio" id="Easy" name="level" value="Easy" checked>
-                      <label for="Easy">Easy</label><br>
-                      <input type="radio" class="radio" id="Medium" name="level" value="Medium">
-                      <label for="Medium">Medium</label><br>
-                      <input type="radio" class="radio" id="Hard" name="level" value="Hard">
-                      <label for="other">Hard</label>
+  div.innerHTML = `<div id="radio-btns">  
+                      <div  class="form_radio_btn" >
+                        <input type="radio" name="lvl" id="Easy" checked>
+                        <label for="Easy">Easy</label>
+                      </div>
+                      <div class="form_radio_btn">
+                        <input type="radio" name="lvl" id="Medium">
+                        <label for="Medium">Medium</label>
+                      </div>
+                      <div  class="form_radio_btn" >
+                        <input type="radio" name="lvl" id="Hard">
+                        <label for="Hard">Hard</label>
+                      </div>
                    </div>
                    <div id="rating"></div>
                    <div id="btn-div"></div>`;
