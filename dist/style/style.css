@@ -17,7 +17,7 @@ body {
   background: repeating-linear-gradient(180deg, #88def8 0%, #a3eaff 48%, #daf6ff 100%);
   background-color: #daf6ff;
   background-repeat: no-repeat;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Berlin Sans FB";
   font-size: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -119,9 +119,34 @@ footer {
           justify-content: space-between;
 }
 
+#work-space #game-field #infoBar #end-game-btn-top {
+  outline: none !important;
+  font-size: 24px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: none;
+}
+
+#work-space #game-field #infoBar #end-game-btn-top:active {
+  outline: none !important;
+  background: #ffebbd;
+}
+
+#work-space #game-field #infoBar #end-game-btn-top:hover {
+  outline: none !important;
+  color: #666;
+}
+
 #work-space #game-field #countClick,
 #work-space #game-field #stopwatch {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 18;
 }
 
@@ -363,7 +388,7 @@ footer {
 .menu-btn {
   border: 1px hidden;
   border-radius: 70%;
-  margin: 10px;
+  margin: 10px 0;
   padding: 50px;
   font-size: 30px;
   font-family: "Berlin Sans FB";
@@ -537,4 +562,20 @@ footer {
 #rating {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+#rating,
+#btn-div {
+  text-align: center;
+}
+
+#rating p,
+#btn-div p {
+  text-align: center;
+  margin: auto 0;
+}
+
+#rating button,
+#btn-div button {
+  width: 60%;
 }

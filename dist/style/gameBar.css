@@ -14,6 +14,32 @@
           justify-content: space-between;
 }
 
+#infoBar #end-game-btn-top {
+  outline: none !important;
+  font-size: 24px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: none;
+}
+
+#infoBar #end-game-btn-top:active {
+  outline: none !important;
+  background: #ffebbd;
+}
+
+#infoBar #end-game-btn-top:hover {
+  outline: none !important;
+  color: #666;
+}
+
 #countClick,
 #stopwatch {
   font-family: Arial, Helvetica, sans-serif;

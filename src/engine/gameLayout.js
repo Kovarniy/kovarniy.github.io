@@ -81,9 +81,17 @@ const addInfoBar = () => {
   gameField.setAttribute("id", "game-field");
   gameField.innerHTML = `<span id="infoBar">
                             <p id="countClick"><b>Number of clicks:</b> 0</p> 
+                            <button id="end-game-btn-top">Back</button>
                             <p id="stopwatch"><b>Time:</b> 00:00:00</p>
                          </span>`;
   doc.append(gameField);
+  const topBack = document.getElementById("end-game-btn-top");
+  topBack.onclick = function () {
+    playSound("dist/sound/buttonClick.mp3");
+    gameState.stopwatch.stop();
+    gameState.reset();
+    renderGameMenu("game-field");
+  };
 };
 
 const addCardsOnField = (fieldSize) => {
@@ -177,7 +185,7 @@ const renderRatingMenu = () => {
   let div = document.createElement("div");
   div.setAttribute("id", "game-menu");
   div.innerHTML = `<div id="radio-btns">  
-                      <div  class="form_radio_btn" >
+                      <div class="form_radio_btn" >
                         <input type="radio" name="lvl" id="Easy" checked>
                         <label for="Easy">Easy</label>
                       </div>
@@ -185,7 +193,7 @@ const renderRatingMenu = () => {
                         <input type="radio" name="lvl" id="Medium">
                         <label for="Medium">Medium</label>
                       </div>
-                      <div  class="form_radio_btn" >
+                      <div class="form_radio_btn" >
                         <input type="radio" name="lvl" id="Hard">
                         <label for="Hard">Hard</label>
                       </div>

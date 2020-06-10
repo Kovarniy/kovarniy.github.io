@@ -36,3 +36,15 @@
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
+#rating,
+#btn-div {
+  text-align: center;
+  p {
+    text-align: center;
+    margin: auto 0;
+  }
+  button {
+    width: 60%;
+  }
+}
