@@ -16,7 +16,7 @@
     { "id": 13, "link": "dist/img/cards/cats/cat14.jpg" },
     { "id": 14, "link": "dist/img/cards/cats/cat15.jpg" }
   ],
-  "Animals" : [
+  "Animals": [
     { "id": 0, "link": "dist/img/cards/animals/alien.jpg" },
     { "id": 1, "link": "dist/img/cards/animals/alpaca.jpg" },
     { "id": 2, "link": "dist/img/cards/animals/axolotl.jpg" },
@@ -32,5 +32,22 @@
     { "id": 12, "link": "dist/img/cards/animals/owl.jpg" },
     { "id": 13, "link": "dist/img/cards/animals/roach.jpg" },
     { "id": 14, "link": "dist/img/cards/animals/snail.jpg" }
+  ],
+  "People": [
+    { "id": 0, "link": "dist/img/cards/people/human1.jpg" },
+    { "id": 1, "link": "dist/img/cards/people/human2.jpg" },
+    { "id": 2, "link": "dist/img/cards/people/human3.jpg" },
+    { "id": 3, "link": "dist/img/cards/people/human4.jpg" },
+    { "id": 4, "link": "dist/img/cards/people/human5.jpg" },
+    { "id": 5, "link": "dist/img/cards/people/human6.jpg" },
+    { "id": 6, "link": "dist/img/cards/people/human7.jpg" },
+    { "id": 7, "link": "dist/img/cards/people/human8.jpg" },
+    { "id": 8, "link": "dist/img/cards/people/human9.jpg" },
+    { "id": 9, "link": "dist/img/cards/people/human10.jpg" },
+    { "id": 10, "link": "dist/img/cards/people/human11.jpg" },
+    { "id": 11, "link": "dist/img/cards/people/human12.jpg" },
+    { "id": 12, "link": "dist/img/cards/people/human13.jpg" },
+    { "id": 13, "link": "dist/img/cards/people/human14.jpg" },
+    { "id": 14, "link": "dist/img/cards/people/human15.jpg" }
   ]
 }
