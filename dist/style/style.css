@@ -17,7 +17,8 @@ body {
   background: repeating-linear-gradient(180deg, #88def8 0%, #a3eaff 48%, #daf6ff 100%);
   background-color: #daf6ff;
   background-repeat: no-repeat;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Berlin Sans FB";
+  font-size: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,9 +119,34 @@ footer {
           justify-content: space-between;
 }
 
+#work-space #game-field #infoBar #end-game-btn-top {
+  outline: none !important;
+  font-size: 24px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: none;
+}
+
+#work-space #game-field #infoBar #end-game-btn-top:active {
+  outline: none !important;
+  background: #ffebbd;
+}
+
+#work-space #game-field #infoBar #end-game-btn-top:hover {
+  outline: none !important;
+  color: #666;
+}
+
 #work-space #game-field #countClick,
 #work-space #game-field #stopwatch {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 18;
 }
 
@@ -359,10 +385,10 @@ footer {
   color: #271303;
 }
 
-#game-menu .menu-btn {
+.menu-btn {
   border: 1px hidden;
   border-radius: 70%;
-  margin: 10px;
+  margin: 10px 0;
   padding: 50px;
   font-size: 30px;
   font-family: "Berlin Sans FB";
@@ -378,8 +404,8 @@ footer {
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-#game-menu .menu-btn:hover,
-#game-menu .menu-btn:focus {
+.menu-btn:hover,
+.menu-btn:focus {
   outline: none !important;
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
@@ -388,7 +414,7 @@ footer {
   color: #271303;
 }
 
-#game-menu .menu-btn:active {
+.menu-btn:active {
   outline: none !important;
   background-color: #fff0ce;
   -webkit-transform: rotate(-12deg);
@@ -468,6 +494,7 @@ footer {
 }
 
 #modalDialog #nick-name {
+  width: 60%;
   background-color: #fff0ce;
   color: #241f05;
   font-size: inherit;
@@ -485,4 +512,70 @@ footer {
 
 #modalDialog .modal-btn:active {
   background-color: #fff0ce;
+}
+
+#radio-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-self: center;
+  /* Checked */
+  /* Hover */
+}
+
+#radio-btns .form_radio_btn {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#radio-btns .form_radio_btn input[type="radio"] {
+  display: none;
+}
+
+#radio-btns .form_radio_btn label {
+  font-size: 24px;
+  font-family: "Berlin Sans FB";
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#radio-btns .form_radio_btn input[type="radio"]:checked + label {
+  background: #ffebbd;
+}
+
+#radio-btns .form_radio_btn label:hover {
+  color: #666;
+}
+
+#rating {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#rating,
+#btn-div {
+  text-align: center;
+}
+
+#rating p,
+#btn-div p {
+  text-align: center;
+  margin: auto 0;
+}
+
+#rating button,
+#btn-div button {
+  width: 60%;
 }

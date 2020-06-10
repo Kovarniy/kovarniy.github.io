@@ -1,6 +1,10 @@
 import { rollCard } from "../events/crads-events.js";
 import { gameState, getGameResults } from "./gameStatistics.js";
-import { selDifLvl, selectSardSet, setRateLvl} from "../events/settnigs-events";
+import {
+  selDifLvl,
+  selectSardSet,
+  setRateLvl,
+} from "../events/settnigs-events";
 import { newGame, openRating, openSettings } from "../events/buttons-clicks.js";
 import {
   getFieldSize,
@@ -42,26 +46,6 @@ const createBackBtn = (context) => {
   context.append(button);
 };
 
-
-
-const createSlideBtn = (context,lvl) => {
-  let button = document.createElement("button");
-  let siblings = context.parentElement.children;
-  button.onclick = function () {
-   for (var i=0, child; child=siblings[i]; i++) {
-        child.classList.remove("chosen");
-   }
-    context.classList.add("chosen");
-  };
-  button.classList.add("btn");
-  button.classList.add(lvl);
-  button.innerText = lvl;
-  context.append(button);
-};
-
-
-
-
 //------------------------------------------------
 
 // input parameter - elemet which must be removed
@@ -97,9 +81,17 @@ const addInfoBar = () => {
   gameField.setAttribute("id", "game-field");
   gameField.innerHTML = `<span id="infoBar">
                             <p id="countClick"><b>Number of clicks:</b> 0</p> 
+                            <button id="end-game-btn-top">Back</button>
                             <p id="stopwatch"><b>Time:</b> 00:00:00</p>
                          </span>`;
   doc.append(gameField);
+  const topBack = document.getElementById("end-game-btn-top");
+  topBack.onclick = function () {
+    playSound("dist/sound/buttonClick.mp3");
+    gameState.stopwatch.stop();
+    gameState.reset();
+    renderGameMenu("game-field");
+  };
 };
 
 const addCardsOnField = (fieldSize) => {
@@ -155,60 +147,66 @@ const addGameMenuListner = () => {
 };
 //------------------------------------------------
 
-
 // rating
-const renderRating = () => {
+const renderRating = (domEl, level) => {
+  let gameResults = localStorage.getItem(level);
+
+  if (gameResults !== null) {
+    gameResults = JSON.parse(gameResults);
+    gameResults.forEach((el) => {
+      const playerInfo = document.createElement("p");
+      playerInfo.innerText = `${el.name} : ${el.points}`;
+      domEl.append(playerInfo);
+    });
+  } else {
+    const playerInfo = document.createElement("p");
+    playerInfo.innerText = `You can be the first!`;
+    domEl.prepend(playerInfo);
+  }
+};
+
+const radioRatingInit = () => {
+  const lvls = ["Easy", "Medium", "Hard"];
+  lvls.forEach((el) => {
+    const domEl = document.getElementById(el);
+    domEl.onclick = function () {
+      removeField("rating");
+      let div = document.createElement("div");
+      div.setAttribute("id", "rating");
+      document.getElementById("radio-btns").after(div);
+      renderRating(document.getElementById("rating"), el);
+    };
+  });
+};
+
+const renderRatingMenu = () => {
   removeField("game-menu");
   const workSpace = document.getElementById("work-space");
   let div = document.createElement("div");
   div.setAttribute("id", "game-menu");
+  div.innerHTML = `<div id="radio-btns">  
+                      <div class="form_radio_btn" >
+                        <input type="radio" name="lvl" id="Easy" checked>
+                        <label for="Easy">Easy</label>
+                      </div>
+                      <div class="form_radio_btn">
+                        <input type="radio" name="lvl" id="Medium">
+                        <label for="Medium">Medium</label>
+                      </div>
+                      <div class="form_radio_btn" >
+                        <input type="radio" name="lvl" id="Hard">
+                        <label for="Hard">Hard</label>
+                      </div>
+                   </div>
+                   <div id="rating"></div>
+                   <div id="btn-div"></div>`;
   workSpace.append(div);
-  const ratingMenu = document.getElementById("game-menu");
-  ratingMenu.classList.add("btn-group");
-  let divEasy = document.createElement("div");
-  let divMedium = document.createElement("div");
-  let divHard = document.createElement("div");
-  divEasy.setAttribute("class", "ratingTable chosen");
-  divMedium.setAttribute("class", "ratingTable"); 
-  divHard.setAttribute("class", "ratingTable");
-  ratingMenu.append(divEasy,divMedium,divHard);
-  let divArr = [divEasy,divMedium,divHard];
-  createSlideBtn(divEasy, "easy");
-  createSlideBtn(divMedium, "medium");
-  createSlideBtn(divHard, "hard");  
-  let gameResultsEasy = getGameResults(12);
-  let gameResultsMedium = getGameResults(18);
-  let gameResultsHard = getGameResults(24);
-  const gameResults = [gameResultsEasy,gameResultsMedium,gameResultsHard];
-  gameResults.forEach(gameResult => {
-   let sorted = []; 
-   for (let [key, value] of Object.entries(gameResult)) {
-    sorted.push(value);
-    }
+  createBackBtn(document.getElementById("btn-div"));
 
+  radioRatingInit();
 
-
-    sorted.forEach(obj => {
-        for (let [key, value] of Object.entries(obj)) {      
-          sorted=sorted.sort((a,b)=>(a.value>b.value)?1:(a.value<b.value)?-1:0)
-
-      }
-   });
-
-
-
-
-    sorted.forEach(obj => {
-      if(sorted.indexOf(obj)<10){
-        console.log(obj);
-        for (let [key, value] of Object.entries(obj)) {      
-          const playerInfo = document.createElement("p");    
-          playerInfo.innerText = `${sorted.indexOf(obj)+1}. ${key} : ${value}`; 
-          divArr[gameResults.indexOf(gameResult)].append(playerInfo);
-      }}
-   });
-  });
-  createBackBtn(ratingMenu);
+  const ratingMenu = document.getElementById("rating");
+  renderRating(ratingMenu, "Easy");
 };
 
 //
@@ -240,6 +238,6 @@ export {
   showEndGameWindow,
   renderGameMenu,
   hiddenEndGameWindow,
-  renderRating,
-  createSelector
+  renderRatingMenu,
+  createSelector,
 };
