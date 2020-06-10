@@ -49,5 +49,22 @@
     { "id": 12, "link": "dist/img/cards/people/human13.jpg" },
     { "id": 13, "link": "dist/img/cards/people/human14.jpg" },
     { "id": 14, "link": "dist/img/cards/people/human15.jpg" }
+  ],
+  "Lenin": [
+    { "id": 0, "link": "dist/img/cards/lenin/anichka.jpg" },
+    { "id": 1, "link": "dist/img/cards/lenin/berry.jpg" },
+    { "id": 2, "link": "dist/img/cards/lenin/communism.jpg" },
+    { "id": 3, "link": "dist/img/cards/lenin/cthulhu.jpg" },
+    { "id": 4, "link": "dist/img/cards/lenin/doc.jpg" },
+    { "id": 5, "link": "dist/img/cards/lenin/goose.jpg" },
+    { "id": 6, "link": "dist/img/cards/lenin/lenin.jpg" },
+    { "id": 7, "link": "dist/img/cards/lenin/nightking.jpg" },
+    { "id": 8, "link": "dist/img/cards/lenin/shroom.jpg" },
+    { "id": 9, "link": "dist/img/cards/lenin/terminator.jpg" },
+    { "id": 10, "link": "dist/img/cards/lenin/buddha.jpg" },
+    { "id": 11, "link": "dist/img/cards/lenin/bust.jpg" },
+    { "id": 12, "link": "dist/img/cards/lenin/moss.jpg" },
+    { "id": 13, "link": "dist/img/cards/lenin/eye.jpg" },
+    { "id": 14, "link": "dist/img/cards/lenin/gzhel.jpg" }
   ]
 }
