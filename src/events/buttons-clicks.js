@@ -2,7 +2,7 @@ import {
   renderGameSettings,
   renderGameMenu,
   hiddenEndGameWindow,
-  renderRating,
+  renderRatingMenu,
 } from "../engine/gameLayout.js";
 import { startGame } from "../engine/newGame.js";
 import { gameState, saveGameResult } from "../engine/gameStatistics.js";
@@ -21,7 +21,7 @@ const openSettings = () => {
 
 const openRating = () => {
   playSound("dist/sound/buttonClick.mp3");
-  renderRating();
+  renderRatingMenu();
 };
 
 const endGame = () => {

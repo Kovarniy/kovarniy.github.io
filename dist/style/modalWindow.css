@@ -71,6 +71,7 @@
 }
 
 #modalDialog #nick-name {
+  width: 60%;
   background-color: #fff0ce;
   color: #241f05;
   font-size: inherit;
